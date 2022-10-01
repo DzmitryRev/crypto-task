@@ -49,4 +49,4 @@ export const assetSlice = createSlice({
 
 // export const selectCount = (state: RootState) => state.counter.value;
 
-export default assetsSlice.reducer;
+export default assetSlice.reducer;

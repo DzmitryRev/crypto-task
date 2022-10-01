@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+// import { useAppSelector } from '../store/store';
 import Button from './Button';
 
 const StyledHeader = styled.header`
@@ -10,8 +11,6 @@ const StyledHeader = styled.header`
 `;
 
 export default function Header() {
-  // Selector from Main page reducer and get top 3 currencies
-  // Selector from Portdolio page reducer and get calculated values
   return (
     <StyledHeader>
       <div>

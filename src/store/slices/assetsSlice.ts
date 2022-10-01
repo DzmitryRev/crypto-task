@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 // import type { PayloadAction } from '@reduxjs/toolkit';
 import axios from 'axios';
 // import { RootState } from '../store';
-import { AssetType } from '../assets.model';
+import { AssetsType, AssetType } from '../assets.model';
 
 interface IAssetsSliceState {
   assets: AssetType[],
@@ -21,7 +21,7 @@ const initialState: IAssetsSliceState = {
 export const fetchAssets = createAsyncThunk(
   'assets/fetchAssets',
   async () => {
-    const response = await axios.get('https://api.coincap.io/v2/assets');
+    const response = await axios.get<AssetsType>('https://api.coincap.io/v2/assets');
     return response.data;
   },
 );
@@ -37,8 +37,8 @@ export const assetsSlice = createSlice({
       console.log(state, action);
     });
     builder.addCase(fetchAssets.fulfilled, (state, action) => {
-      console.log(state, action.payload);
       state.loading = false;
+      state.assets = action.payload.data;
     });
     builder.addCase(fetchAssets.rejected, (state) => {
       state.loading = false;
