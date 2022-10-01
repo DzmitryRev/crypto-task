@@ -1,7 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-// import type { PayloadAction } from '@reduxjs/toolkit';
 import axios from 'axios';
-// import { RootState } from '../store';
 import { AssetsType, AssetType } from '../assets.model';
 
 interface IAssetsSliceState {
@@ -31,10 +29,9 @@ export const assetsSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(fetchAssets.pending, (state, action) => {
+    builder.addCase(fetchAssets.pending, (state) => {
       state.error = false;
       state.loading = true;
-      console.log(state, action);
     });
     builder.addCase(fetchAssets.fulfilled, (state, action) => {
       state.loading = false;

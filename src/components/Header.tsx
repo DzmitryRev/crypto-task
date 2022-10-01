@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
+import { fetchTopRankAssets } from '../store/slices/ratingSlise';
+import { useAppDispatch, useAppSelector } from '../store/store';
 // import { useAppSelector } from '../store/store';
 import Button from './Button';
 
@@ -11,11 +13,20 @@ const StyledHeader = styled.header`
 `;
 
 export default function Header() {
+  const dispatch = useAppDispatch();
+  const { topRankAssets, loading, error } = useAppSelector((store) => store.rating);
+
+  useEffect(() => {
+    dispatch(fetchTopRankAssets());
+  }, []);
+
   return (
     <StyledHeader>
-      <div>
-        top 3 currencies
-      </div>
+      {error ? <div /> : (
+        <div>
+          {loading ? 'Loading...' : topRankAssets.map((item) => <div key={item.id}>{item.id}</div>)}
+        </div>
+      )}
       <div>
         my profit
       </div>

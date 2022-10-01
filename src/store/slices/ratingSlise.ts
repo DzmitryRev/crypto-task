@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 // import type { PayloadAction } from '@reduxjs/toolkit';
 import axios from 'axios';
 // import { RootState } from '../store';
-import { AssetType } from '../assets.model';
+import { AssetsType, AssetType } from '../assets.model';
 
 interface IRatingSliceState {
   topRankAssets: AssetType[],
@@ -19,7 +19,7 @@ const initialState: IRatingSliceState = {
 export const fetchTopRankAssets = createAsyncThunk(
   'assets/fetchTopRankAssets',
   async () => {
-    const response = await axios.get('https://api.coincap.io/v2/assets&limit=3');
+    const response = await axios.get<AssetsType>('https://api.coincap.io/v2/assets?limit=3');
     return response.data;
   },
 );
@@ -29,14 +29,13 @@ export const assetsSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(fetchTopRankAssets.pending, (state, action) => {
+    builder.addCase(fetchTopRankAssets.pending, (state) => {
       state.error = false;
       state.loading = true;
-      console.log(state, action);
     });
     builder.addCase(fetchTopRankAssets.fulfilled, (state, action) => {
-      console.log(state, action.payload);
       state.loading = false;
+      state.topRankAssets = action.payload.data;
     });
     builder.addCase(fetchTopRankAssets.rejected, (state) => {
       state.loading = false;
