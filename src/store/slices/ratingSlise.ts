@@ -4,43 +4,41 @@ import axios from 'axios';
 // import { RootState } from '../store';
 import { AssetType } from '../assets.model';
 
-interface IAssetsSliceState {
-  assets: AssetType[],
-  page: number,
+interface IRatingSliceState {
+  topRankAssets: AssetType[],
   error: boolean,
   loading: boolean
 }
 
-const initialState: IAssetsSliceState = {
-  assets: [],
-  page: 1,
+const initialState: IRatingSliceState = {
+  topRankAssets: [],
   error: false,
   loading: false,
 };
 
-export const fetchAssets = createAsyncThunk(
-  'assets/fetchAssets',
+export const fetchTopRankAssets = createAsyncThunk(
+  'assets/fetchTopRankAssets',
   async () => {
-    const response = await axios.get('https://api.coincap.io/v2/assets');
+    const response = await axios.get('https://api.coincap.io/v2/assets&limit=3');
     return response.data;
   },
 );
 
 export const assetsSlice = createSlice({
-  name: 'assets',
+  name: 'rating',
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(fetchAssets.pending, (state, action) => {
+    builder.addCase(fetchTopRankAssets.pending, (state, action) => {
       state.error = false;
       state.loading = true;
       console.log(state, action);
     });
-    builder.addCase(fetchAssets.fulfilled, (state, action) => {
+    builder.addCase(fetchTopRankAssets.fulfilled, (state, action) => {
       console.log(state, action.payload);
       state.loading = false;
     });
-    builder.addCase(fetchAssets.rejected, (state) => {
+    builder.addCase(fetchTopRankAssets.rejected, (state) => {
       state.loading = false;
       state.error = true;
     });
