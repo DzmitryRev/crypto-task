@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { fetchTopRankAssets } from '../store/slices/ratingSlise';
 import { useAppDispatch, useAppSelector } from '../store/store';
-// import { useAppSelector } from '../store/store';
 import Button from './Button';
+import Modal from './Modal';
 
 const StyledHeader = styled.header`
     height: 70px;
@@ -20,6 +20,8 @@ export default function Header() {
     dispatch(fetchTopRankAssets());
   }, []);
 
+  const [i, o] = useState(false);
+
   return (
     <StyledHeader>
       {error ? <div /> : (
@@ -31,10 +33,11 @@ export default function Header() {
         my profit
       </div>
       <div>
-        <Button color="blue">
+        <Button color="blue" action={() => { o(!i); }}>
           portfolio
         </Button>
       </div>
+      <Modal isOpen={i} closeCallback={() => { o(false); }} />
     </StyledHeader>
   );
 }

@@ -12,13 +12,13 @@ const StyledButton = styled.button`
     border-radius: 5px;
 `;
 
-type ButtonProps = {
+type ButtonPropsType = {
   color: 'blue' | 'green' | 'red',
   children: React.ReactNode,
   action?: () => void;
 };
 
-function Button({ color, action, children }: ButtonProps) {
+function Button({ color, action, children }: ButtonPropsType) {
   return (
     <StyledButton
       color={color}

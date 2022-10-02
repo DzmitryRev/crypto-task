@@ -6,6 +6,7 @@ export default createGlobalStyle`
         padding: 0;
         outline: 0;
         box-sizing: border-box;
+        cursor: default;
     }
     body{
         font-family: 'Montserrat', sans-serif;
@@ -18,6 +19,12 @@ export default createGlobalStyle`
         font: inherit;
         border: none;
         cursor: pointer;
+    }
+    svg{
+        cursor: pointer;
+        *{
+            cursor: pointer;
+        }
     }
     :root {
         --blue-color: #4d94ff;
