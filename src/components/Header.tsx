@@ -4,13 +4,28 @@ import styled from 'styled-components';
 import { fetchTopRankAssets } from '../store/slices/ratingSlise';
 import { useAppDispatch, useAppSelector } from '../store/store';
 import Button from './Button';
-// import Modal from './Modal';
 
 const StyledHeader = styled.header`
-    height: 70px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  height: 70px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+  .top-curr {
+    cursor: pointer;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  .top-curr-profit {
+    font-weight: 500;
+  }
+  .color-red {
+    color: #ff6060;
+  }
+  .color-green {
+    color: #00a400;
+  }
 `;
 
 export default function Header() {
@@ -27,22 +42,43 @@ export default function Header() {
 
   return (
     <StyledHeader>
-      {error ? <div /> : (
+      {error ? (
+        <div />
+      ) : (
         <div>
-          {loading ? 'Loading...' : topRankAssets.map((item) => <div key={item.id}>{item.id}</div>)}
+          {loading
+            ? 'Loading...'
+            : topRankAssets.map((item) => (
+              <Link to={`asset/${item.id}`}>
+                <div key={item.id} className="top-curr">
+                  {item.name}
+                  {' '}
+                  <span
+                    className={`top-curr-profit ${
+                      Number(item.changePercent24Hr) < 0 ? 'color-red' : 'color-green'
+                    }`}
+                  >
+                    {Number(item.changePercent24Hr).toFixed(2)}
+                    %
+                  </span>
+                </div>
+              </Link>
+            ))}
         </div>
       )}
-      <div>
-        my profit
-      </div>
+      <div>my profit</div>
       <div>
         <Link to={`${location.pathname}${location.pathname === '/' ? '' : '/'}portfolio`}>
-          <Button color="blue" action={() => { o(!i); }}>
+          <Button
+            color="blue"
+            action={() => {
+              o(!i);
+            }}
+          >
             portfolio
           </Button>
         </Link>
       </div>
-      {/* <Modal isOpen={i} closeCallback={() => { o(false); }} /> */}
     </StyledHeader>
   );
 }

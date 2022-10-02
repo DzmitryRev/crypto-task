@@ -17,8 +17,8 @@ function AssetField({
     <tr>
       <td className="name-td"><Link to={`asset/${id}`}>{name}</Link></td>
       <td className="symbol-td">{symbol}</td>
-      <td className="price-td" title={price}>{price}</td>
-      <td className="change-td">{changePerDay}</td>
+      <td className="price-td" title={price}>{Number(price).toFixed(2)}</td>
+      <td className="change-td" title={changePerDay}>{Number(changePerDay).toFixed(2)}</td>
       <td>
         <Link to={`buy/${id}`}>
           <Button color="green">add</Button>
