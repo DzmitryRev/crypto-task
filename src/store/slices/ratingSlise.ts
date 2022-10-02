@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 // import type { PayloadAction } from '@reduxjs/toolkit';
 import axios from 'axios';
 // import { RootState } from '../store';
-import { AssetsType, AssetType } from '../assets.model';
+import { AssetsResponseType, AssetType } from '../assets.model';
 
 interface IRatingSliceState {
   topRankAssets: AssetType[],
@@ -19,7 +19,7 @@ const initialState: IRatingSliceState = {
 export const fetchTopRankAssets = createAsyncThunk(
   'assets/fetchTopRankAssets',
   async () => {
-    const response = await axios.get<AssetsType>('https://api.coincap.io/v2/assets?limit=3');
+    const response = await axios.get<AssetsResponseType>('https://api.coincap.io/v2/assets?limit=3');
     return response.data;
   },
 );

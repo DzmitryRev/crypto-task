@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import { fetchTopRankAssets } from '../store/slices/ratingSlise';
 import { useAppDispatch, useAppSelector } from '../store/store';
 import Button from './Button';
-import Modal from './Modal';
+// import Modal from './Modal';
 
 const StyledHeader = styled.header`
     height: 70px;
@@ -15,6 +16,8 @@ const StyledHeader = styled.header`
 export default function Header() {
   const dispatch = useAppDispatch();
   const { topRankAssets, loading, error } = useAppSelector((store) => store.rating);
+
+  const location = useLocation();
 
   useEffect(() => {
     dispatch(fetchTopRankAssets());
@@ -33,11 +36,13 @@ export default function Header() {
         my profit
       </div>
       <div>
-        <Button color="blue" action={() => { o(!i); }}>
-          portfolio
-        </Button>
+        <Link to={`${location.pathname}${location.pathname === '/' ? '' : '/'}portfolio`}>
+          <Button color="blue" action={() => { o(!i); }}>
+            portfolio
+          </Button>
+        </Link>
       </div>
-      <Modal isOpen={i} closeCallback={() => { o(false); }} />
+      {/* <Modal isOpen={i} closeCallback={() => { o(false); }} /> */}
     </StyledHeader>
   );
 }

@@ -13,7 +13,12 @@ export type AssetType = {
   explorer: string;
 };
 
-export type AssetsType = {
+export type AssetsResponseType = {
   data: AssetType[]
+  timestamp: number;
+};
+
+export type AssetResponseType = {
+  data: AssetType
   timestamp: number;
 };
