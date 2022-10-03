@@ -1,26 +1,34 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { AssetResponseType, AssetType } from '../assets.model';
+import {
+  AssetResponseType, AssetType, HistoryResponceType, HistoryType,
+} from '../assets.model';
 
 interface IAssetSliceState {
-  asset: AssetType | null,
-  error: boolean,
-  loading: boolean
+  asset: AssetType | null;
+  history: HistoryType[];
+  error: boolean;
+  loading: boolean;
 }
 
 const initialState: IAssetSliceState = {
   asset: null,
+  history: [],
   error: false,
   loading: false,
 };
 
-export const fetchAsset = createAsyncThunk(
-  'assets/fetchAsset',
-  async (id: string) => {
-    const response = await axios.get<AssetResponseType>(`https://api.coincap.io/v2/assets/${id}`);
-    return response.data;
-  },
-);
+export const fetchAsset = createAsyncThunk('asset/fetchAsset', async (id: string) => {
+  const response = await axios.get<AssetResponseType>(`https://api.coincap.io/v2/assets/${id}`);
+  return response.data;
+});
+
+export const fetchHistory = createAsyncThunk('asset/fecthHistory', async (id: string) => {
+  const response = await axios.get<HistoryResponceType>(
+    `https://api.coincap.io/v2/assets/${id}/history?interval=d1`,
+  );
+  return response.data;
+});
 
 export const assetSlice = createSlice({
   name: 'asset',
@@ -39,11 +47,10 @@ export const assetSlice = createSlice({
       state.loading = false;
       state.error = true;
     });
+    builder.addCase(fetchHistory.fulfilled, (state, action) => {
+      state.history = action.payload.data;
+    });
   },
 });
-
-// export const {  } = assetsSlice.actions;
-
-// export const selectCount = (state: RootState) => state.counter.value;
 
 export default assetSlice.reducer;
