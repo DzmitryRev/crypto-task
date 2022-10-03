@@ -19,6 +19,8 @@ const StyledModal = styled.header`
   display: ${(props) => (props['aria-hidden'] === true ? 'block' : 'none')};
   min-width: 300px;
   min-height: 224px;
+  max-height: 90vh;
+  overflow-y: scroll;
   border-radius: 10px;
   background-color: #ffffff;
   border: 1px solid #c6c6c6;
@@ -32,6 +34,9 @@ const StyledModal = styled.header`
     right: 0;
     top: 0;
   }
+  ::-webkit-scrollbar {
+    width: 0;
+    }
 `;
 
 type ModalPropsType = {

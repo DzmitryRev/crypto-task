@@ -46,9 +46,10 @@ export default function Header() {
         <div />
       ) : (
         <div>
-          {loading
-            ? 'Loading...'
-            : topRankAssets.map((item) => (
+          {loading ? (
+            ''
+          ) : (
+            topRankAssets.map((item) => (
               <Link to={`asset/${item.id}`}>
                 <div key={item.id} className="top-curr">
                   {item.name}
@@ -63,7 +64,8 @@ export default function Header() {
                   </span>
                 </div>
               </Link>
-            ))}
+            ))
+          )}
         </div>
       )}
       <div>my profit</div>

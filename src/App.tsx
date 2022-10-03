@@ -5,6 +5,7 @@ import Header from './components/Header';
 import Modal from './components/Modal';
 import AssetPage from './pages/AssetPage';
 import MainPage from './pages/MainPage';
+import PortfolioPage from './pages/PortfolioPage';
 import { Wrapper } from './styles/wrapper';
 
 function App() {
@@ -57,7 +58,7 @@ function App() {
                     navigate(-1);
                   }}
                 >
-                  aaa
+                  <PortfolioPage />
                 </Modal>
               </AssetPage>
             )}
@@ -72,7 +73,7 @@ function App() {
                     navigate(-1);
                   }}
                 >
-                  aaa
+                  <PortfolioPage />
                 </Modal>
               </MainPage>
             )}

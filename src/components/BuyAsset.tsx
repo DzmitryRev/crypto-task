@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import styled from 'styled-components';
+import PortfolioStorage from '../services/localStorage.service';
 import { fetchAsset } from '../store/slices/assetSlise';
 import { useAppDispatch, useAppSelector } from '../store/store';
 import { StyledError } from '../styles/wrapper';
@@ -35,6 +36,7 @@ function BuyAsset() {
   const { assetId } = useParams();
   const dispatch = useAppDispatch();
   const { loading, error, asset } = useAppSelector((store) => store.asset);
+  const navigate = useNavigate();
 
   const [quantity, setQuantity] = useState<string>('');
   const [total, setTotal] = useState<number>(0);
@@ -90,7 +92,16 @@ function BuyAsset() {
                     )}
                   </div>
 
-                  <Button color="green">buy</Button>
+                  <Button
+                    color="green"
+                    action={() => {
+                      PortfolioStorage.addToPortfolio(asset, total, +quantity);
+                      navigate(-1);
+                    }}
+                    disabled={!total}
+                  >
+                    buy
+                  </Button>
                 </>
               ) : (
                 ''
