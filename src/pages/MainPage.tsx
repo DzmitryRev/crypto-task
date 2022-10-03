@@ -5,6 +5,7 @@ import AssetField from '../components/AssetField';
 import Loading from '../components/Loading';
 import { fetchAssets } from '../store/slices/assetsSlice';
 import { useAppDispatch, useAppSelector } from '../store/store';
+import { StyledError } from '../styles/wrapper';
 
 const StyledTable = styled.table`
   margin: 0 auto;
@@ -12,7 +13,7 @@ const StyledTable = styled.table`
   font-size: 20px;
   line-height: 48px;
 
-  thead{
+  thead {
     font-weight: 700;
   }
   td {
@@ -20,25 +21,25 @@ const StyledTable = styled.table`
     text-overflow: ellipsis;
     padding: 0 15px;
     white-space: nowrap;
-    a{
-        display: block;
-        width: 100%;
-        height: 100%;
+    a {
+      display: block;
+      width: 100%;
+      height: 100%;
     }
   }
-  .name-td{
+  .name-td {
     max-width: 250px;
     min-width: 200px;
     cursor: pointer;
-    &:hover{
-        background-color: rgba(103, 77, 232, 0.3);
+    &:hover {
+      background-color: rgba(103, 77, 232, 0.3);
     }
   }
   .price-td,
   .change-td {
     max-width: 100px;
     @media screen and (max-width: 600px) {
-        display: none;
+      display: none;
     }
   }
   .price-td,
@@ -48,7 +49,7 @@ const StyledTable = styled.table`
   .price-td-head,
   .profit-td-head {
     @media screen and (max-width: 600px) {
-        display: none;
+      display: none;
     }
   }
 `;
@@ -68,7 +69,7 @@ function MainPage({ children = '' }: MainPagePropsType) {
   return (
     <div>
       {error ? (
-        <div>error</div>
+        <StyledError><h4>Something went wrong</h4></StyledError>
       ) : loading ? (
         <Loading />
       ) : (

@@ -6,6 +6,7 @@ import Chart from '../components/Chart';
 import Loading from '../components/Loading';
 import { fetchAsset, fetchHistory } from '../store/slices/assetSlise';
 import { useAppDispatch, useAppSelector } from '../store/store';
+import { StyledError } from '../styles/wrapper';
 
 const StyledConentContainer = styled.div`
   padding: 0 130px;
@@ -48,7 +49,12 @@ function AssetPage({ children }: AssetPagePropsType) {
   return (
     <div>
       {error ? (
-        <div>error</div>
+        <StyledError>
+          <h4>Something went wrong</h4>
+          <Link to="/" className="back-link">
+            <Button color="red">back</Button>
+          </Link>
+        </StyledError>
       ) : (
         <div>
           {loading ? (
@@ -56,11 +62,11 @@ function AssetPage({ children }: AssetPagePropsType) {
           ) : (
             <>
               <StyledConentContainer>
+                <Link to="/" className="back-link">
+                  <Button color="red">back</Button>
+                </Link>
                 {asset ? (
                   <>
-                    <Link to="/" className="back-link">
-                      <Button color="red">back</Button>
-                    </Link>
                     <h2>
                       {asset.name}
                       (

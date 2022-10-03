@@ -17,8 +17,8 @@ const StyledModalContainer = styled.div`
 const StyledModal = styled.header`
   position: fixed;
   display: ${(props) => (props['aria-hidden'] === true ? 'block' : 'none')};
-  min-height: 300px;
   min-width: 300px;
+  min-height: 224px;
   border-radius: 10px;
   background-color: #ffffff;
   border: 1px solid #c6c6c6;
@@ -37,9 +37,10 @@ const StyledModal = styled.header`
 type ModalPropsType = {
   isOpen: boolean
   closeCallback: () => void
+  children: React.ReactNode
 };
 
-export default function Modal({ isOpen, closeCallback }: ModalPropsType) {
+export default function Modal({ isOpen, closeCallback, children }: ModalPropsType) {
   if (isOpen) {
     document.body.style.overflow = 'hidden';
   }
@@ -56,7 +57,7 @@ export default function Modal({ isOpen, closeCallback }: ModalPropsType) {
           e.stopPropagation();
         }}
       >
-        Modal
+        {children}
         <div className="close-btn">
           <ClearIcon fontSize="large" color="inherit" onClick={closeModal} />
         </div>
