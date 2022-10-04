@@ -1,7 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-// import type { PayloadAction } from '@reduxjs/toolkit';
 import axios from 'axios';
-// import { RootState } from '../store';
 import { AssetsResponseType, AssetType } from '../assets.model';
 
 interface IRatingSliceState {

@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
+import { StorageAssetType } from '../services/localStorage.service';
+import { AssetType } from '../store/assets.model';
 import { fetchTopRankAssets } from '../store/slices/ratingSlise';
 import { useAppDispatch, useAppSelector } from '../store/store';
 import Button from './Button';
@@ -28,7 +30,9 @@ const StyledHeader = styled.header`
   }
 `;
 
-export default function Header() {
+type HeaderPropsType = { portfolio: StorageAssetType[]; assets: AssetType[] };
+
+export default function Header({ portfolio, assets }: HeaderPropsType) {
   const dispatch = useAppDispatch();
   const { topRankAssets, loading, error } = useAppSelector((store) => store.rating);
 
@@ -38,7 +42,23 @@ export default function Header() {
     dispatch(fetchTopRankAssets());
   }, []);
 
-  const [i, o] = useState(false);
+  const [prev, setPrev] = useState(0);
+  const [sum, setSum] = useState(0);
+  const [profit, setProfit] = useState(0);
+
+  useEffect(() => {
+    const prevSum = portfolio.reduce((accumulator, obj) => accumulator + obj.total, 0);
+    let newSum = 0;
+    portfolio.forEach((item) => {
+      const newItem = assets.find((i) => i.id === item.asset.id);
+      if (newItem) newSum += parseFloat(newItem?.priceUsd) * item.quantity;
+    });
+    setPrev(prevSum);
+    setSum(newSum);
+    setProfit(newSum - prevSum);
+  }, [portfolio, assets]);
+
+  console.log(assets);
 
   return (
     <StyledHeader>
@@ -46,12 +66,11 @@ export default function Header() {
         <div />
       ) : (
         <div>
-          {loading ? (
-            ''
-          ) : (
-            topRankAssets.map((item) => (
-              <Link to={`asset/${item.id}`}>
-                <div key={item.id} className="top-curr">
+          {loading
+            ? ''
+            : topRankAssets.map((item) => (
+              <Link to={`asset/${item.id}`} key={item.id}>
+                <div className="top-curr">
                   {item.name}
                   {' '}
                   <span
@@ -64,21 +83,27 @@ export default function Header() {
                   </span>
                 </div>
               </Link>
-            ))
-          )}
+            ))}
         </div>
       )}
-      <div>my profit</div>
+      <div>
+        {portfolio.length ? (
+          <h4>
+            {sum.toFixed(2)}
+            <div>
+              {profit.toFixed(2) || ''}
+              (
+              {`${((profit / prev) * 100).toFixed(2)}%` || ''}
+              )
+            </div>
+          </h4>
+        ) : (
+          ''
+        )}
+      </div>
       <div>
         <Link to={`${location.pathname}${location.pathname === '/' ? '' : '/'}portfolio`}>
-          <Button
-            color="blue"
-            action={() => {
-              o(!i);
-            }}
-          >
-            portfolio
-          </Button>
+          <Button color="blue">portfolio</Button>
         </Link>
       </div>
     </StyledHeader>

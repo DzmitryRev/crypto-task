@@ -20,6 +20,7 @@ const StyledModal = styled.header`
   min-width: 300px;
   min-height: 224px;
   max-height: 90vh;
+  max-width: 90vh;
   overflow-y: scroll;
   border-radius: 10px;
   background-color: #ffffff;

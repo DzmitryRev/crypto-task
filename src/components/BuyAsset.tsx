@@ -32,7 +32,7 @@ const StyledBuyAssetBlock = styled.div`
   }
 `;
 
-function BuyAsset() {
+function BuyAsset({ loadPortfolio }: { loadPortfolio: () => void }) {
   const { assetId } = useParams();
   const dispatch = useAppDispatch();
   const { loading, error, asset } = useAppSelector((store) => store.asset);
@@ -96,6 +96,7 @@ function BuyAsset() {
                     color="green"
                     action={() => {
                       PortfolioStorage.addToPortfolio(asset, total, +quantity);
+                      loadPortfolio();
                       navigate(-1);
                     }}
                     disabled={!total}
