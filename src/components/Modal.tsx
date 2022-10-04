@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import ClearIcon from '@mui/icons-material/Clear';
 
@@ -54,6 +54,11 @@ export default function Modal({ isOpen, closeCallback, children }: ModalPropsTyp
     closeCallback();
     document.body.style.overflow = 'auto';
   };
+
+  useEffect(() => () => {
+    document.body.style.overflow = 'auto';
+  }, []);
+
   return (
     <>
       <StyledModalContainer aria-hidden={isOpen} onClick={closeModal} />

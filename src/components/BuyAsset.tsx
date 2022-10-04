@@ -95,10 +95,10 @@ function BuyAsset({ loadPortfolio }: { loadPortfolio: () => void }) {
                   <Button
                     color="green"
                     action={() => {
+                      document.body.style.overflow = 'auto';
                       PortfolioStorage.addToPortfolio(asset, total, +quantity);
                       loadPortfolio();
                       navigate(-1);
-                      document.body.style.overflow = 'auto';
                     }}
                     disabled={!total}
                   >
