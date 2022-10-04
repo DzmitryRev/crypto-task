@@ -98,6 +98,7 @@ function BuyAsset({ loadPortfolio }: { loadPortfolio: () => void }) {
                       PortfolioStorage.addToPortfolio(asset, total, +quantity);
                       loadPortfolio();
                       navigate(-1);
+                      document.body.style.overflow = 'auto';
                     }}
                     disabled={!total}
                   >
