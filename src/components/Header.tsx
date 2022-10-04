@@ -13,6 +13,11 @@ const StyledHeader = styled.header`
   justify-content: space-between;
   align-items: center;
   margin-bottom: 40px;
+  .top-curr-container {
+    @media screen and (max-width: 468px) {
+      display: none;
+    }
+  }
   .top-curr {
     cursor: pointer;
     &:hover {
@@ -58,14 +63,12 @@ export default function Header({ portfolio, assets }: HeaderPropsType) {
     setProfit(newSum - prevSum);
   }, [portfolio, assets]);
 
-  console.log(assets);
-
   return (
     <StyledHeader>
       {error ? (
         <div />
       ) : (
-        <div>
+        <div className="top-curr-container">
           {loading
             ? ''
             : topRankAssets.map((item) => (

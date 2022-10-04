@@ -2,10 +2,17 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import AssetField from '../components/AssetField';
+import Button from '../components/Button';
 import Loading from '../components/Loading';
-import { fetchAssets } from '../store/slices/assetsSlice';
+import { fetchAssets, setOffset } from '../store/slices/assetsSlice';
 import { useAppDispatch, useAppSelector } from '../store/store';
 import { StyledError } from '../styles/wrapper';
+
+const StyledPagination = styled.div`
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+`;
 
 const StyledTable = styled.table`
   margin: 0 auto;
@@ -60,41 +67,67 @@ type MainPagePropsType = {
 
 function MainPage({ children = '' }: MainPagePropsType) {
   const dispatch = useAppDispatch();
-  const { loading, error, assets } = useAppSelector((store) => store.assets);
+  const {
+    loading, error, assets, offset,
+  } = useAppSelector((store) => store.assets);
 
   useEffect(() => {
-    dispatch(fetchAssets());
-  }, []);
+    dispatch(fetchAssets(offset));
+  }, [offset]);
 
   return (
     <div>
       {error ? (
-        <StyledError><h4>Something went wrong</h4></StyledError>
+        <StyledError>
+          <h4>Something went wrong</h4>
+        </StyledError>
       ) : loading ? (
         <Loading />
       ) : (
-        <StyledTable>
-          <thead>
-            <tr>
-              <td>Name</td>
-              <td className="symbol-td-head">Symbol</td>
-              <td className="price-td-head">Price $</td>
-              <td className="profit-td-head">Profit %</td>
-            </tr>
-          </thead>
-          <tbody>
-            {assets.map((item) => (
-              <AssetField
-                key={item.id}
-                id={item.id}
-                price={item.priceUsd}
-                name={item.name}
-                changePerDay={item.changePercent24Hr}
-                symbol={item.symbol}
-              />
-            ))}
-          </tbody>
-        </StyledTable>
+        <>
+          {' '}
+          <StyledTable>
+            <thead>
+              <tr>
+                <td>Name</td>
+                <td className="symbol-td-head">Symbol</td>
+                <td className="price-td-head">Price $</td>
+                <td className="profit-td-head">Profit %</td>
+              </tr>
+            </thead>
+            <tbody>
+              {assets.map((item) => (
+                <AssetField
+                  key={item.id}
+                  id={item.id}
+                  price={item.priceUsd}
+                  name={item.name}
+                  changePerDay={item.changePercent24Hr}
+                  symbol={item.symbol}
+                />
+              ))}
+            </tbody>
+          </StyledTable>
+          <StyledPagination>
+            <Button
+              color="green"
+              action={() => {
+                dispatch(setOffset(offset - 50));
+              }}
+              disabled={!offset}
+            >
+              {'<'}
+            </Button>
+            <Button
+              color="green"
+              action={() => {
+                dispatch(setOffset(offset + 50));
+              }}
+            >
+              {'>'}
+            </Button>
+          </StyledPagination>
+        </>
       )}
       {children}
     </div>

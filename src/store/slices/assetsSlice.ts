@@ -4,22 +4,22 @@ import { AssetsResponseType, AssetType } from '../assets.model';
 
 interface IAssetsSliceState {
   assets: AssetType[],
-  page: number,
+  offset: number,
   error: boolean,
   loading: boolean
 }
 
 const initialState: IAssetsSliceState = {
   assets: [],
-  page: 1,
+  offset: 0,
   error: false,
   loading: false,
 };
 
 export const fetchAssets = createAsyncThunk(
   'assets/fetchAssets',
-  async () => {
-    const response = await axios.get<AssetsResponseType>('https://api.coincap.io/v2/assets');
+  async (offset: number) => {
+    const response = await axios.get<AssetsResponseType>(`https://api.coincap.io/v2/assets?limit=50&offset=${offset}`);
     return response.data;
   },
 );
@@ -27,7 +27,11 @@ export const fetchAssets = createAsyncThunk(
 export const assetsSlice = createSlice({
   name: 'assets',
   initialState,
-  reducers: {},
+  reducers: {
+    setOffset(state, action) {
+      state.offset = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(fetchAssets.pending, (state) => {
       state.error = false;
@@ -43,5 +47,7 @@ export const assetsSlice = createSlice({
     });
   },
 });
+
+export const { setOffset } = assetsSlice.actions;
 
 export default assetsSlice.reducer;

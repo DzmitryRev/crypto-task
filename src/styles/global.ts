@@ -10,6 +10,7 @@ export default createGlobalStyle`
     }
     body{
         font-family: 'Montserrat', sans-serif;
+        scroll-behavior: smooth;
     }
     a{
         text-decoration: none;
