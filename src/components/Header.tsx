@@ -5,7 +5,7 @@ import { StorageAssetType } from '../services/localStorage.service';
 import { AssetType } from '../store/assets.model';
 import { fetchTopRankAssets } from '../store/slices/ratingSlise';
 import { useAppDispatch, useAppSelector } from '../store/store';
-import Button from './Button';
+import ButtonLink from './Link';
 
 const StyledHeader = styled.header`
   height: 70px;
@@ -105,9 +105,12 @@ export default function Header({ portfolio, assets }: HeaderPropsType) {
         )}
       </div>
       <div>
-        <Link to={`${location.pathname}${location.pathname === '/' ? '' : '/'}portfolio`}>
-          <Button color="blue">portfolio</Button>
-        </Link>
+        <ButtonLink
+          color="blue"
+          path={`${location.pathname}${location.pathname === '/' ? '' : '/'}portfolio`}
+        >
+          portfolio
+        </ButtonLink>
       </div>
     </StyledHeader>
   );

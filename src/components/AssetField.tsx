@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Button from './Button';
+import ButtonLink from './Link';
 
 type AssetFieldPropsType = {
   id: string,
@@ -20,9 +20,12 @@ function AssetField({
       <td className="price-td" title={price}>{Number(price).toFixed(2)}</td>
       <td className="change-td" title={changePerDay}>{Number(changePerDay).toFixed(2)}</td>
       <td>
-        <Link to={`buy/${id}`}>
-          <Button color="green">add</Button>
-        </Link>
+        <ButtonLink
+          color="green"
+          path={`buy/${id}`}
+        >
+          add
+        </ButtonLink>
       </td>
     </tr>
   );

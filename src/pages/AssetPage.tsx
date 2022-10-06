@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
-import Button from '../components/Button';
 import Chart from '../components/Chart';
+import ButtonLink from '../components/Link';
 import Loading from '../components/Loading';
 import { fetchAsset, fetchHistory } from '../store/slices/assetSlise';
 import { useAppDispatch, useAppSelector } from '../store/store';
@@ -51,9 +51,12 @@ function AssetPage({ children }: AssetPagePropsType) {
       {error ? (
         <StyledError>
           <h4>Something went wrong</h4>
-          <Link to="/" className="back-link">
-            <Button color="red">back</Button>
-          </Link>
+          <ButtonLink
+            color="red"
+            path="/"
+          >
+            back
+          </ButtonLink>
         </StyledError>
       ) : (
         <div>
@@ -62,9 +65,12 @@ function AssetPage({ children }: AssetPagePropsType) {
           ) : (
             <>
               <StyledConentContainer>
-                <Link to="/" className="back-link">
-                  <Button color="red">back</Button>
-                </Link>
+                <ButtonLink
+                  color="red"
+                  path="/"
+                >
+                  back
+                </ButtonLink>
                 {asset ? (
                   <>
                     <h2>
@@ -81,9 +87,13 @@ function AssetPage({ children }: AssetPagePropsType) {
                       {Number(asset.changePercent24Hr).toFixed(2)}
                       %
                     </p>
-                    <Link to={`buy/${assetId}`}>
-                      <Button color="green">add</Button>
-                    </Link>
+
+                    <ButtonLink
+                      color="green"
+                      path={`buy/${assetId}`}
+                    >
+                      add
+                    </ButtonLink>
                   </>
                 ) : (
                   ''
