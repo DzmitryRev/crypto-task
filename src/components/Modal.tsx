@@ -17,7 +17,7 @@ const StyledModalContainer = styled.div`
 const StyledModal = styled.header`
   position: fixed;
   display: ${(props) => (props['aria-hidden'] === true ? 'block' : 'none')};
-  min-width: 300px;
+  width: 320px;
   min-height: 224px;
   max-height: 90vh;
   max-width: 90vh;

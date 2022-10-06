@@ -52,7 +52,6 @@ function PortfolioPage({ loadPortfolio, portfolio, assets }: PortfolioPageType) 
                   {' '}
                   {assets.length ? `(${(currentPrice - item.total).toFixed(2)})` : ''}
                 </td>
-                <td>{item.quantity}</td>
                 <td>
                   <DeleteForeverIcon
                     onClick={() => {
