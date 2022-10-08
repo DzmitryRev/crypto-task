@@ -1,5 +1,5 @@
 /* eslint-disable no-nested-ternary */
-import React, { useEffect } from 'react';
+import React, { PropsWithChildren, useEffect } from 'react';
 import styled from 'styled-components';
 import AssetField from '../components/AssetField';
 import Button from '../components/Button';
@@ -61,11 +61,7 @@ const StyledTable = styled.table`
   }
 `;
 
-type MainPagePropsType = {
-  children?: React.ReactNode;
-};
-
-function MainPage({ children = '' }: MainPagePropsType) {
+function MainPage({ children }: PropsWithChildren) {
   const dispatch = useAppDispatch();
   const {
     loading, error, assets, offset,
@@ -133,9 +129,5 @@ function MainPage({ children = '' }: MainPagePropsType) {
     </div>
   );
 }
-
-MainPage.defaultProps = {
-  children: '',
-};
 
 export default MainPage;

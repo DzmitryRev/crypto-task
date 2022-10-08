@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { PropsWithChildren, useEffect } from 'react';
 import styled from 'styled-components';
 import ClearIcon from '@mui/icons-material/Clear';
 
@@ -30,23 +30,26 @@ const StyledModal = styled.header`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  .close-btn{
+  .close-btn {
     position: absolute;
     right: 0;
     top: 0;
   }
   ::-webkit-scrollbar {
     width: 0;
-    }
+  }
 `;
 
 type ModalPropsType = {
-  isOpen: boolean
-  closeCallback: () => void
-  children: React.ReactNode
+  isOpen: boolean;
+  closeCallback: () => void;
 };
 
-export default function Modal({ isOpen, closeCallback, children }: ModalPropsType) {
+export default function Modal({
+  isOpen,
+  closeCallback,
+  children,
+}: PropsWithChildren<ModalPropsType>) {
   if (isOpen) {
     document.body.style.overflow = 'hidden';
   }
@@ -55,9 +58,12 @@ export default function Modal({ isOpen, closeCallback, children }: ModalPropsTyp
     document.body.style.overflow = 'auto';
   };
 
-  useEffect(() => () => {
-    document.body.style.overflow = 'auto';
-  }, []);
+  useEffect(
+    () => () => {
+      document.body.style.overflow = 'auto';
+    },
+    [],
+  );
 
   return (
     <>

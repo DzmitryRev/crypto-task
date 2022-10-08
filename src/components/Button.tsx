@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropsWithChildren } from 'react';
 import styled from 'styled-components';
 
 const StyledButton = styled.button`
@@ -17,14 +17,13 @@ const StyledButton = styled.button`
 
 type ButtonPropsType = {
   color: 'blue' | 'green' | 'red';
-  disabled?: boolean;
-  children: React.ReactNode;
   action?: () => void;
+  disabled?: boolean;
 };
 
 function Button({
-  color, action, disabled = false, children,
-}: ButtonPropsType) {
+  color, action = () => {}, disabled = false, children,
+}: PropsWithChildren<ButtonPropsType>) {
   return (
     <StyledButton
       color={color}

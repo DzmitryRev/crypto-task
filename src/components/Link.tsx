@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropsWithChildren } from 'react';
 import { Link } from 'react-router-dom';
 
 import styled from 'styled-components';
@@ -17,18 +17,15 @@ const StyledLink = styled(Link)`
 
 type ButtonPropsType = {
   color: 'blue' | 'green' | 'red';
-  children: React.ReactNode;
   path: string;
 };
 
-function ButtonLink({ color, path, children = '' }: ButtonPropsType) {
+function ButtonLink({ color, path, children = '' }: PropsWithChildren<ButtonPropsType>) {
   return (
     <StyledLink color={color} to={path}>
       {children}
     </StyledLink>
   );
 }
-
-Link.defaultProps = {};
 
 export default ButtonLink;

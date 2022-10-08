@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { PropsWithChildren, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import Chart from '../components/Chart';
@@ -30,11 +30,7 @@ const StyledConentContainer = styled.div`
   }
 `;
 
-type AssetPagePropsType = {
-  children?: React.ReactNode;
-};
-
-function AssetPage({ children }: AssetPagePropsType) {
+function AssetPage({ children }: PropsWithChildren) {
   const { assetId } = useParams();
   const dispatch = useAppDispatch();
   const {
@@ -108,9 +104,5 @@ function AssetPage({ children }: AssetPagePropsType) {
     </div>
   );
 }
-
-AssetPage.defaultProps = {
-  children: '',
-};
 
 export default AssetPage;
