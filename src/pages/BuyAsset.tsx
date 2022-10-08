@@ -7,6 +7,7 @@ import { useAppDispatch, useAppSelector } from '../store/store';
 import { StyledError } from '../styles/wrapper';
 import Button from '../components/Button';
 import Loading from '../components/Loading';
+import { setPortfolio } from '../store/slices/portfolioSlice';
 
 const StyledBuyAsset = styled.div`
   .buy-asset-name {
@@ -33,25 +34,22 @@ const StyledBuyAsset = styled.div`
   }
 `;
 
-type BuyAssetPropsType = {
-  loadPortfolio: () => void;
-};
-
-function BuyAsset({ loadPortfolio }: BuyAssetPropsType) {
+function BuyAsset() {
   const { assetId } = useParams();
-  const dispatch = useAppDispatch();
-  const { loading, error, asset } = useAppSelector((store) => store.asset);
   const navigate = useNavigate();
 
+  const dispatch = useAppDispatch();
+  const { loading, error, asset } = useAppSelector((store) => store.asset);
+
   const [quantity, setQuantity] = useState<string>('');
-  const [total, setTotal] = useState<number>(0);
+  const [totalPrice, setTotalPrice] = useState<number>(0);
 
   useEffect(() => {
     dispatch(fetchAsset(assetId as string));
   }, [assetId]);
 
   useEffect(() => {
-    setTotal(Number(asset?.priceUsd) * +quantity);
+    setTotalPrice(Number(asset?.priceUsd) * +quantity);
   }, [quantity]);
 
   return (
@@ -87,9 +85,9 @@ function BuyAsset({ loadPortfolio }: BuyAssetPropsType) {
                         setQuantity(e.target.value);
                       }}
                     />
-                    {total ? (
-                      <span className="buy-asset-total" title={`${total}`}>
-                        {total.toFixed(2)}
+                    {totalPrice ? (
+                      <span className="buy-asset-total" title={`${totalPrice}`}>
+                        {totalPrice.toFixed(2)}
                         ...$
                       </span>
                     ) : (
@@ -101,11 +99,11 @@ function BuyAsset({ loadPortfolio }: BuyAssetPropsType) {
                     color="green"
                     action={() => {
                       document.body.style.overflow = 'auto';
-                      PortfolioStorage.addToPortfolio(asset, total, +quantity);
-                      loadPortfolio();
+                      PortfolioStorage.addToPortfolio(asset, totalPrice, +quantity);
+                      dispatch(setPortfolio());
                       navigate(-1);
                     }}
-                    disabled={!total}
+                    disabled={!totalPrice}
                   >
                     buy
                   </Button>

@@ -5,6 +5,7 @@ import AssetField from '../components/AssetTableRow';
 import Button from '../components/Button';
 import Loading from '../components/Loading';
 import { fetchAssets, setOffset } from '../store/slices/assetsSlice';
+import { setPortfolio } from '../store/slices/portfolioSlice';
 import { useAppDispatch, useAppSelector } from '../store/store';
 import { StyledError } from '../styles/wrapper';
 
@@ -64,15 +65,22 @@ const StyledTable = styled.table`
 function Main({ children }: PropsWithChildren) {
   const dispatch = useAppDispatch();
   const {
-    loading, error, assets, offset,
+    loading, error, offset, assets,
   } = useAppSelector((store) => store.assets);
+
+  const { sum } = useAppSelector((store) => store.portfolio);
 
   useEffect(() => {
     dispatch(fetchAssets(offset));
   }, [offset]);
 
+  useEffect(() => {
+    dispatch(setPortfolio());
+  }, [offset]);
+
   return (
     <div>
+      {sum}
       {error ? (
         <StyledError>
           <h4>Something went wrong</h4>

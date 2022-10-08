@@ -17,7 +17,7 @@ function App() {
 
   return (
     <Wrapper>
-      <Header portfolio={portfolio} assets={assets} />
+      <Header />
       <div>
         <Routes>
           <Route path="/" element={<Main />} />
@@ -32,11 +32,7 @@ function App() {
                     navigate(-1);
                   }}
                 >
-                  <BuyAsset
-                    loadPortfolio={() => {
-                      loadPortfolio();
-                    }}
-                  />
+                  <BuyAsset />
                 </Modal>
               </Main>
             )}
@@ -51,11 +47,7 @@ function App() {
                     navigate(-1);
                   }}
                 >
-                  <BuyAsset
-                    loadPortfolio={() => {
-                      loadPortfolio();
-                    }}
-                  />
+                  <BuyAsset />
                 </Modal>
               </Asset>
             )}

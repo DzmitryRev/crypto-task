@@ -1,67 +1,20 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import styled from 'styled-components';
-import { StorageAssetType } from '../services/localStorage.service';
-import { AssetType } from '../store/assets.model';
 import { fetchTopRankAssets } from '../store/slices/ratingSlise';
 import { useAppDispatch, useAppSelector } from '../store/store';
+import StyledHeader from '../styles/header';
 import ButtonLink from './Link';
 
-const StyledHeader = styled.header`
-  height: 70px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 40px;
-  .top-curr-container {
-    @media screen and (max-width: 468px) {
-      display: none;
-    }
-  }
-  .top-curr {
-    cursor: pointer;
-    &:hover {
-      text-decoration: underline;
-    }
-  }
-  .top-curr-profit {
-    font-weight: 500;
-  }
-  .color-red {
-    color: #ff6060;
-  }
-  .color-green {
-    color: #00a400;
-  }
-`;
-
-type HeaderPropsType = { portfolio: StorageAssetType[]; assets: AssetType[] };
-
-export default function Header({ portfolio, assets }: HeaderPropsType) {
+export default function Header() {
   const dispatch = useAppDispatch();
   const { topRankAssets, loading, error } = useAppSelector((store) => store.rating);
+  const { sum, profit } = useAppSelector((store) => store.portfolio);
 
   const location = useLocation();
 
   useEffect(() => {
     dispatch(fetchTopRankAssets());
   }, []);
-
-  const [prev, setPrev] = useState(0);
-  const [sum, setSum] = useState(0);
-  const [profit, setProfit] = useState(0);
-
-  useEffect(() => {
-    const prevSum = portfolio.reduce((accumulator, obj) => accumulator + obj.total, 0);
-    let newSum = 0;
-    portfolio.forEach((item) => {
-      const newItem = assets.find((i) => i.id === item.asset.id);
-      if (newItem) newSum += parseFloat(newItem?.priceUsd) * item.quantity;
-    });
-    setPrev(prevSum);
-    setSum(newSum);
-    setProfit(newSum - prevSum);
-  }, [portfolio, assets]);
 
   return (
     <StyledHeader>
@@ -90,13 +43,13 @@ export default function Header({ portfolio, assets }: HeaderPropsType) {
         </div>
       )}
       <div>
-        {portfolio.length ? (
+        {sum ? (
           <h4>
             {sum.toFixed(2)}
             <div>
               {profit.toFixed(2) || ''}
               (
-              {`${((profit / prev) * 100).toFixed(2)}%` || ''}
+              {`${((profit / sum) * 100).toFixed(2)}%` || ''}
               )
             </div>
           </h4>

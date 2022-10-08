@@ -1,13 +1,21 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
+import PortfolioStorage, { StorageAssetType } from '../../services/localStorage.service';
+import { calculateProfitSum, calculateSum } from '../../services/profit.service';
 import { AssetResponseType, AssetType } from '../assets.model';
 
 interface IPortfolioSliceState {
   assets: AssetType[];
+  portfolio: StorageAssetType[];
+  sum: number;
+  profit: number;
 }
 
 const initialState: IPortfolioSliceState = {
   assets: [],
+  portfolio: [],
+  sum: 0,
+  profit: 0,
 };
 
 export const fetchPortfolioAsset = createAsyncThunk(
@@ -22,8 +30,12 @@ export const portfolioSlice = createSlice({
   name: 'portfolio',
   initialState,
   reducers: {
-    clean(state) {
+    cleanAssets(state) {
       state.assets = [];
+    },
+    setPortfolio(state) {
+      state.portfolio = PortfolioStorage.getPortfolio();
+      state.sum = calculateSum(state.portfolio);
     },
   },
   extraReducers: (builder) => {
@@ -31,11 +43,12 @@ export const portfolioSlice = createSlice({
       const newAsset = action.payload.data;
       if (!state.assets.filter((item) => item.id === action.payload.data.id).length) {
         state.assets.push(newAsset);
+        state.profit = state.sum - calculateProfitSum(state.portfolio, state.assets);
       }
     });
   },
 });
 
-export const { clean } = portfolioSlice.actions;
+export const { cleanAssets, setPortfolio } = portfolioSlice.actions;
 
 export default portfolioSlice.reducer;

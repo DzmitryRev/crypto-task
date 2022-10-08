@@ -1,7 +1,7 @@
 /* eslint-disable linebreak-style */
 import { useEffect, useState } from 'react';
 import PortfolioStorage, { StorageAssetType } from '../services/localStorage.service';
-import { clean, fetchPortfolioAsset } from '../store/slices/portfolioSlice';
+import { cleanAssets, fetchPortfolioAsset } from '../store/slices/portfolioSlice';
 import { useAppDispatch, useAppSelector } from '../store/store';
 
 function useProfit() {
@@ -24,7 +24,7 @@ function useProfit() {
       dispatch(fetchPortfolioAsset(item.asset.id));
     });
     return () => {
-      dispatch(clean());
+      dispatch(cleanAssets());
     };
   }, [portfolio]);
 
