@@ -1,7 +1,7 @@
 /* eslint-disable no-nested-ternary */
 import React, { PropsWithChildren, useEffect } from 'react';
 import styled from 'styled-components';
-import AssetField from '../components/AssetField';
+import AssetField from '../components/AssetTableRow';
 import Button from '../components/Button';
 import Loading from '../components/Loading';
 import { fetchAssets, setOffset } from '../store/slices/assetsSlice';
@@ -61,7 +61,7 @@ const StyledTable = styled.table`
   }
 `;
 
-function MainPage({ children }: PropsWithChildren) {
+function Main({ children }: PropsWithChildren) {
   const dispatch = useAppDispatch();
   const {
     loading, error, assets, offset,
@@ -130,4 +130,4 @@ function MainPage({ children }: PropsWithChildren) {
   );
 }
 
-export default MainPage;
+export default Main;

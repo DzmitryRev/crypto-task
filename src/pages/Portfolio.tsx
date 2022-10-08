@@ -24,7 +24,7 @@ type PortfolioPageType = {
   portfolio: StorageAssetType[];
 };
 
-function PortfolioPage({ loadPortfolio, portfolio, assets }: PortfolioPageType) {
+function Portfolio({ loadPortfolio, portfolio, assets }: PortfolioPageType) {
   return (
     <StyledTable>
       <thead>
@@ -73,4 +73,4 @@ function PortfolioPage({ loadPortfolio, portfolio, assets }: PortfolioPageType) 
   );
 }
 
-export default PortfolioPage;
+export default Portfolio;

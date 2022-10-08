@@ -8,7 +8,7 @@ import { fetchAsset, fetchHistory } from '../store/slices/assetSlise';
 import { useAppDispatch, useAppSelector } from '../store/store';
 import { StyledError } from '../styles/wrapper';
 
-const StyledConentContainer = styled.div`
+const StyledContentContainer = styled.div`
   padding: 0 130px;
   display: flex;
   justify-content: space-between;
@@ -30,7 +30,7 @@ const StyledConentContainer = styled.div`
   }
 `;
 
-function AssetPage({ children }: PropsWithChildren) {
+function Asset({ children }: PropsWithChildren) {
   const { assetId } = useParams();
   const dispatch = useAppDispatch();
   const {
@@ -47,10 +47,7 @@ function AssetPage({ children }: PropsWithChildren) {
       {error ? (
         <StyledError>
           <h4>Something went wrong</h4>
-          <ButtonLink
-            color="red"
-            path="/"
-          >
+          <ButtonLink color="red" path="/">
             back
           </ButtonLink>
         </StyledError>
@@ -60,11 +57,8 @@ function AssetPage({ children }: PropsWithChildren) {
             <Loading />
           ) : (
             <>
-              <StyledConentContainer>
-                <ButtonLink
-                  color="red"
-                  path="/"
-                >
+              <StyledContentContainer>
+                <ButtonLink color="red" path="/">
                   back
                 </ButtonLink>
                 {asset ? (
@@ -84,17 +78,14 @@ function AssetPage({ children }: PropsWithChildren) {
                       %
                     </p>
 
-                    <ButtonLink
-                      color="green"
-                      path={`buy/${assetId}`}
-                    >
+                    <ButtonLink color="green" path={`buy/${assetId}`}>
                       add
                     </ButtonLink>
                   </>
                 ) : (
                   ''
                 )}
-              </StyledConentContainer>
+              </StyledContentContainer>
               <Chart history={history} />
             </>
           )}
@@ -105,4 +96,4 @@ function AssetPage({ children }: PropsWithChildren) {
   );
 }
 
-export default AssetPage;
+export default Asset;

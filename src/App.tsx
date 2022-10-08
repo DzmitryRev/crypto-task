@@ -1,12 +1,13 @@
 import React from 'react';
 import { Route, Routes, useNavigate } from 'react-router-dom';
-import BuyAsset from './components/BuyAsset';
 import Header from './components/Header';
 import Modal from './components/Modal';
 import useProfit from './hooks/useProfit';
-import AssetPage from './pages/AssetPage';
-import MainPage from './pages/MainPage';
-import PortfolioPage from './pages/PortfolioPage';
+import Asset from './pages/Asset';
+import Main from './pages/Main';
+import Portfolio from './pages/Portfolio';
+import BuyAsset from './pages/BuyAsset';
+
 import { Wrapper } from './styles/wrapper';
 
 function App() {
@@ -19,12 +20,12 @@ function App() {
       <Header portfolio={portfolio} assets={assets} />
       <div>
         <Routes>
-          <Route path="/" element={<MainPage />} />
-          <Route path="/asset/:assetId" element={<AssetPage />} />
+          <Route path="/" element={<Main />} />
+          <Route path="/asset/:assetId" element={<Asset />} />
           <Route
             path="/buy/:assetId"
             element={(
-              <MainPage>
+              <Main>
                 <Modal
                   isOpen
                   closeCallback={() => {
@@ -37,13 +38,13 @@ function App() {
                     }}
                   />
                 </Modal>
-              </MainPage>
+              </Main>
             )}
           />
           <Route
             path="asset/:assetId/buy/:assetId"
             element={(
-              <AssetPage>
+              <Asset>
                 <Modal
                   isOpen
                   closeCallback={() => {
@@ -56,20 +57,20 @@ function App() {
                     }}
                   />
                 </Modal>
-              </AssetPage>
+              </Asset>
             )}
           />
           <Route
             path="asset/:assetId/portfolio"
             element={(
-              <AssetPage>
+              <Asset>
                 <Modal
                   isOpen
                   closeCallback={() => {
                     navigate(-1);
                   }}
                 >
-                  <PortfolioPage
+                  <Portfolio
                     assets={assets}
                     portfolio={portfolio}
                     loadPortfolio={() => {
@@ -77,20 +78,20 @@ function App() {
                     }}
                   />
                 </Modal>
-              </AssetPage>
+              </Asset>
             )}
           />
           <Route
             path="/portfolio"
             element={(
-              <MainPage>
+              <Main>
                 <Modal
                   isOpen
                   closeCallback={() => {
                     navigate(-1);
                   }}
                 >
-                  <PortfolioPage
+                  <Portfolio
                     assets={assets}
                     portfolio={portfolio}
                     loadPortfolio={() => {
@@ -98,7 +99,7 @@ function App() {
                     }}
                   />
                 </Modal>
-              </MainPage>
+              </Main>
             )}
           />
         </Routes>

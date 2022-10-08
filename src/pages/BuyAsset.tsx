@@ -5,10 +5,10 @@ import PortfolioStorage from '../services/localStorage.service';
 import { fetchAsset } from '../store/slices/assetSlise';
 import { useAppDispatch, useAppSelector } from '../store/store';
 import { StyledError } from '../styles/wrapper';
-import Button from './Button';
-import Loading from './Loading';
+import Button from '../components/Button';
+import Loading from '../components/Loading';
 
-const StyledBuyAssetBlock = styled.div`
+const StyledBuyAsset = styled.div`
   .buy-asset-name {
     margin-bottom: 5px;
   }
@@ -24,7 +24,6 @@ const StyledBuyAssetBlock = styled.div`
       font-size: 25px;
       border: 1px solid #333;
       margin: 0 20px 20px 0;
-      
     }
   }
   .buy-asset-total {
@@ -34,7 +33,11 @@ const StyledBuyAssetBlock = styled.div`
   }
 `;
 
-function BuyAsset({ loadPortfolio }: { loadPortfolio: () => void }) {
+type BuyAssetPropsType = {
+  loadPortfolio: () => void;
+};
+
+function BuyAsset({ loadPortfolio }: BuyAssetPropsType) {
   const { assetId } = useParams();
   const dispatch = useAppDispatch();
   const { loading, error, asset } = useAppSelector((store) => store.asset);
@@ -62,7 +65,7 @@ function BuyAsset({ loadPortfolio }: { loadPortfolio: () => void }) {
           {loading ? (
             <Loading />
           ) : (
-            <StyledBuyAssetBlock>
+            <StyledBuyAsset>
               {asset ? (
                 <>
                   <h2 className="buy-asset-name">
@@ -110,7 +113,7 @@ function BuyAsset({ loadPortfolio }: { loadPortfolio: () => void }) {
               ) : (
                 ''
               )}
-            </StyledBuyAssetBlock>
+            </StyledBuyAsset>
           )}
         </div>
       )}
