@@ -1,12 +1,12 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import usePortfolio from '../hooks/usePortfolio';
 import assetsApi from '../store/api/AssetsApi';
-import { useAppSelector } from '../store/store';
 import StyledHeader from '../styles/StyledHeader';
 import ButtonLink from './Link';
 
 export default function Header() {
-  const { sum, profit } = useAppSelector((store) => store.portfolio);
+  const { sum, profit } = usePortfolio();
   const { data } = assetsApi.useFetchAllAssetsQuery({ offset: 0, limit: 3 }, {
     pollingInterval: 1000,
   });
@@ -37,7 +37,7 @@ export default function Header() {
       )}
 
       <div>
-        {true ? (
+        {sum ? (
           <h4>
             {sum.toFixed(2)}
             <div>

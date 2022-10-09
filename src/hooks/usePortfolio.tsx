@@ -1,15 +1,15 @@
 /* eslint-disable linebreak-style */
-import { useEffect, useState } from 'react';
-import PortfolioStorage, { StorageAssetType } from '../services/localStorage.service';
-import { cleanAssets, fetchPortfolioAsset } from '../store/slices/portfolioSlice';
+import { useEffect } from 'react';
+import { cleanAssets, fetchPortfolioAsset, setPortfolio } from '../store/slices/portfolioSlice';
 import { useAppDispatch, useAppSelector } from '../store/store';
 
-function useProfit() {
-  const [portfolio, setPortfolio] = useState<StorageAssetType[]>([]);
+function usePortfolio() {
   const dispatch = useAppDispatch();
-  const { assets } = useAppSelector((store) => store.portfolio);
+  const {
+    portfolio, assets, sum, profit,
+  } = useAppSelector((store) => store.portfolio);
   const loadPortfolio = () => {
-    setPortfolio(PortfolioStorage.getPortfolio());
+    dispatch(setPortfolio());
     portfolio.forEach((item) => {
       dispatch(fetchPortfolioAsset(item.asset.id));
     });
@@ -29,8 +29,12 @@ function useProfit() {
   }, [portfolio]);
 
   return {
-    portfolio, assets, loadPortfolio,
+    portfolio,
+    assets,
+    sum,
+    profit,
+    loadPortfolio,
   };
 }
 
-export default useProfit;
+export default usePortfolio;

@@ -26,7 +26,7 @@ export const StyledModal = styled.header`
   background-color: #ffffff;
   border: 1px solid #c6c6c6;
   box-shadow: 0 0 10px 0 rgba(34, 60, 80, 0.2);
-  padding: 30px 20px 20px 20px;
+  padding: 30px 10px 10px 10px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);

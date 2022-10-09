@@ -2,15 +2,19 @@
 import React from 'react';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import styled from 'styled-components';
-import PortfolioStorage, { StorageAssetType } from '../services/localStorage.service';
-import { AssetType } from '../store/assets.model';
+import PortfolioStorage from '../services/localStorage.service';
+import usePortfolio from '../hooks/usePortfolio';
 
 const StyledTable = styled.table`
   width: 100%;
+  font-size: 14px;
   td {
+    max-width: 100px;
     font-weight: 500;
-    padding: 10px;
+    padding: 5px;
     text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   thead {
     td {
@@ -19,13 +23,9 @@ const StyledTable = styled.table`
   }
 `;
 
-type PortfolioPageType = {
-  loadPortfolio: () => void;
-  assets: AssetType[];
-  portfolio: StorageAssetType[];
-};
+function Portfolio() {
+  const { portfolio, assets, loadPortfolio } = usePortfolio();
 
-function Portfolio({ loadPortfolio, portfolio, assets }: PortfolioPageType) {
   return (
     <StyledTable>
       <thead>

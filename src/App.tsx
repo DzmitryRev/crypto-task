@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import Header from './components/Header';
 import Modal from './components/Modal';
-import useProfit from './hooks/useProfit';
+// import useProfit from './hooks/useProfit';
 import Asset from './pages/Asset';
 import Main from './pages/Main';
 import Portfolio from './pages/Portfolio';
@@ -12,7 +12,7 @@ import StyledWrapper from './styles/StyledWrapper';
 function App() {
   const navigate = useNavigate();
 
-  const { portfolio, loadPortfolio, assets } = useProfit();
+  //   const { portfolio, loadPortfolio, assets } = useProfit();
 
   return (
     <StyledWrapper>
@@ -61,13 +61,7 @@ function App() {
                     navigate(-1);
                   }}
                 >
-                  <Portfolio
-                    assets={assets}
-                    portfolio={portfolio}
-                    loadPortfolio={() => {
-                      loadPortfolio();
-                    }}
-                  />
+                  <Portfolio />
                 </Modal>
               </Asset>
             )}
@@ -82,13 +76,7 @@ function App() {
                     navigate(-1);
                   }}
                 >
-                  <Portfolio
-                    assets={assets}
-                    portfolio={portfolio}
-                    loadPortfolio={() => {
-                      loadPortfolio();
-                    }}
-                  />
+                  <Portfolio />
                 </Modal>
               </Main>
             )}
