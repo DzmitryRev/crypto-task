@@ -13,8 +13,10 @@ function Main({ children }: PropsWithChildren) {
   const {
     data,
     error,
-    isLoading: loading,
-  } = assetsApi.useFetchAllAssetsQuery({ offset: pageOffset, limit: 50 });
+    isFetching: loading,
+  } = assetsApi.useFetchAllAssetsQuery({ offset: pageOffset, limit: 50 }, {
+    refetchOnMountOrArgChange: true,
+  });
   const assets = data?.data;
 
   return (
@@ -25,15 +27,15 @@ function Main({ children }: PropsWithChildren) {
         </StyledError>
       )}
       {loading && <Loading />}
-      {assets && (
+      {assets && !loading && (
         <>
           <StyledTable>
             <thead>
               <tr>
                 <td>Name</td>
                 <td className="symbol-td-head">Symbol</td>
-                <td className="price-td-head">Price $</td>
-                <td className="profit-td-head">Profit %</td>
+                <td className="price-td-head">Price</td>
+                <td className="profit-td-head">Profit</td>
               </tr>
             </thead>
             <tbody>

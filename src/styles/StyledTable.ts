@@ -3,8 +3,8 @@ import styled from 'styled-components';
 const StyledTable = styled.table`
   margin: 0 auto;
   font-weight: 500;
-  font-size: 20px;
-  line-height: 48px;
+  font-size: 16px;
+  line-height: 40px;
 
   thead {
     font-weight: 700;
@@ -21,8 +21,8 @@ const StyledTable = styled.table`
     }
   }
   .name-td {
-    max-width: 250px;
-    min-width: 200px;
+    max-width: 200px;
+    min-width: 150px;
     cursor: pointer;
     &:hover {
       background-color: rgba(103, 77, 232, 0.3);
@@ -34,6 +34,9 @@ const StyledTable = styled.table`
     @media screen and (max-width: 600px) {
       display: none;
     }
+  }
+  .change-td {
+    text-align: right;
   }
   .price-td,
   .change-td,

@@ -10,7 +10,9 @@ import StyledError from '../styles/StyledError';
 function Asset({ children }: PropsWithChildren) {
   const { assetId } = useParams();
 
-  const { data, error, isLoading: loading } = assetsApi.useFetchAssetQuery(assetId || '');
+  const { data, error, isLoading: loading } = assetsApi.useFetchAssetQuery(assetId || '', {
+    pollingInterval: 1000,
+  });
   const asset = data?.data;
 
   const { data: history } = assetsApi.useFetchAssetHistoryQuery(assetId || '');

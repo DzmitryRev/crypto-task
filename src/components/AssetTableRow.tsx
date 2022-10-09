@@ -24,6 +24,7 @@ function AssetTableRow({
       </td>
       <td className="change-td" title={changePerDay}>
         {Number(changePerDay).toFixed(2)}
+        %
       </td>
       <td>
         <ButtonLink color="green" path={`buy/${id}`}>

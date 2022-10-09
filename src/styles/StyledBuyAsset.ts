@@ -14,14 +14,13 @@ const StyledBuyAsset = styled.div`
     margin-bottom: 15px;
     input {
       width: 150px;
-      font-size: 25px;
+      font-size: 22px;
       border: 1px solid #333;
       margin: 0 20px 20px 0;
     }
   }
   .buy-asset-total {
-    display: block;
-    font-size: 25px;
+    font-size: 16px;
     font-weight: 700;
   }
 `;
