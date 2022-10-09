@@ -5,7 +5,7 @@ import StyledLoadingContainer from '../styles/StyledLoadingContainer';
 function Loading() {
   return (
     <StyledLoadingContainer>
-      <CircularProgress className="loading-gif" />
+      <CircularProgress data-testid="loading" className="loading-gif" />
     </StyledLoadingContainer>
   );
 }
