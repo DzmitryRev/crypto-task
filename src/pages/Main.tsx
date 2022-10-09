@@ -1,5 +1,6 @@
 /* eslint-disable no-nested-ternary */
-import React, { PropsWithChildren, useState } from 'react';
+import React, { useState } from 'react';
+import { Outlet } from 'react-router-dom';
 import AssetField from '../components/AssetTableRow';
 import Button from '../components/Button';
 import Loading from '../components/Loading';
@@ -8,7 +9,7 @@ import StyledError from '../styles/StyledError';
 import StyledPagination from '../styles/StyledPagination';
 import StyledTable from '../styles/StyledTable';
 
-function Main({ children }: PropsWithChildren) {
+function Main() {
   const [pageOffset, setPageOffset] = useState(0);
   const {
     data,
@@ -72,7 +73,7 @@ function Main({ children }: PropsWithChildren) {
           </StyledPagination>
         </>
       )}
-      {children}
+      <Outlet />
     </div>
   );
 }
