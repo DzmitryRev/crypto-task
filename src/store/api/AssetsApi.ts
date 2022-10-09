@@ -1,4 +1,3 @@
-/* eslint-disable linebreak-style */
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/dist/query/react';
 import { AssetsResponseType, AssetResponseType, HistoryResponceType } from '../assets.model';
 

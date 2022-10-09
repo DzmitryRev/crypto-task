@@ -7,9 +7,12 @@ import ButtonLink from './Link';
 
 export default function Header() {
   const { sum, profit } = usePortfolio();
-  const { data } = assetsApi.useFetchAllAssetsQuery({ offset: 0, limit: 3 }, {
-    pollingInterval: 1000,
-  });
+  const { data } = assetsApi.useFetchAllAssetsQuery(
+    { offset: 0, limit: 3 },
+    {
+      pollingInterval: 1000,
+    },
+  );
   const topAssets = data?.data;
 
   const location = useLocation();
@@ -37,18 +40,17 @@ export default function Header() {
       )}
 
       <div>
-        {sum ? (
-          <h4>
-            {sum.toFixed(2)}
-            <div>
+        {!!sum && (
+          <>
+            <h4>{sum.toFixed(2)}</h4>
+            {' '}
+            <h4>
               {profit.toFixed(2) || ''}
               (
               {`${((profit / sum) * 100).toFixed(2)}%` || ''}
               )
-            </div>
-          </h4>
-        ) : (
-          ''
+            </h4>
+          </>
         )}
       </div>
       <div>

@@ -1,5 +1,3 @@
-/* eslint-disable linebreak-style */
-
 import { useEffect } from 'react';
 
 function useModal(isOpen: boolean, closeCallback: () => void) {

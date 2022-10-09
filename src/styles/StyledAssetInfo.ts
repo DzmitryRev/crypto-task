@@ -1,4 +1,3 @@
-/* eslint-disable linebreak-style */
 import styled from 'styled-components';
 
 const StyledAssetInfo = styled.div`

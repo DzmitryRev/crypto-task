@@ -1,4 +1,3 @@
-/* eslint-disable no-nested-ternary */
 import React, { useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import AssetField from '../components/AssetTableRow';

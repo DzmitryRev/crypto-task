@@ -1,4 +1,3 @@
-/* eslint-disable linebreak-style */
 import { useEffect } from 'react';
 import { cleanAssets, fetchPortfolioAsset, setPortfolio } from '../store/slices/portfolioSlice';
 import { useAppDispatch, useAppSelector } from '../store/store';
