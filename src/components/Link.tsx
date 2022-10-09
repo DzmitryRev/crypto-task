@@ -1,14 +1,14 @@
 import React, { PropsWithChildren } from 'react';
 import StyledLink from '../styles/StyledLink';
 
-type ButtonPropsType = {
+type ButtonLinkPropsType = {
   color: 'blue' | 'green' | 'red';
   path: string;
 };
 
-function ButtonLink({ color, path, children = '' }: PropsWithChildren<ButtonPropsType>) {
+function ButtonLink({ color, path, children }: PropsWithChildren<ButtonLinkPropsType>) {
   return (
-    <StyledLink color={color} to={path}>
+    <StyledLink data-testid="link" color={color} to={path}>
       {children}
     </StyledLink>
   );
