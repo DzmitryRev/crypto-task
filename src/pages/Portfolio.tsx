@@ -10,6 +10,7 @@ const StyledTable = styled.table`
   td {
     font-weight: 500;
     padding: 10px;
+    text-align: center;
   }
   thead {
     td {

@@ -1,95 +1,32 @@
 /* eslint-disable no-nested-ternary */
-import React, { PropsWithChildren, useEffect } from 'react';
-import styled from 'styled-components';
+import React, { PropsWithChildren, useState } from 'react';
 import AssetField from '../components/AssetTableRow';
 import Button from '../components/Button';
 import Loading from '../components/Loading';
-import { fetchAssets, setOffset } from '../store/slices/assetsSlice';
-import { setPortfolio } from '../store/slices/portfolioSlice';
-import { useAppDispatch, useAppSelector } from '../store/store';
-import { StyledError } from '../styles/wrapper';
-
-const StyledPagination = styled.div`
-  display: flex;
-  justify-content: space-between;
-  padding: 0 20px;
-`;
-
-const StyledTable = styled.table`
-  margin: 0 auto;
-  font-weight: 500;
-  font-size: 20px;
-  line-height: 48px;
-
-  thead {
-    font-weight: 700;
-  }
-  td {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    padding: 0 15px;
-    white-space: nowrap;
-    a {
-      display: block;
-      width: 100%;
-      height: 100%;
-    }
-  }
-  .name-td {
-    max-width: 250px;
-    min-width: 200px;
-    cursor: pointer;
-    &:hover {
-      background-color: rgba(103, 77, 232, 0.3);
-    }
-  }
-  .price-td,
-  .change-td {
-    max-width: 100px;
-    @media screen and (max-width: 600px) {
-      display: none;
-    }
-  }
-  .price-td,
-  .change-td,
-  .symbol-td,
-  .symbol-td-head,
-  .price-td-head,
-  .profit-td-head {
-    @media screen and (max-width: 600px) {
-      display: none;
-    }
-  }
-`;
+import assetsApi from '../store/api/AssetsApi';
+import StyledError from '../styles/StyledError';
+import StyledPagination from '../styles/StyledPagination';
+import StyledTable from '../styles/StyledTable';
 
 function Main({ children }: PropsWithChildren) {
-  const dispatch = useAppDispatch();
+  const [pageOffset, setPageOffset] = useState(0);
   const {
-    loading, error, offset, assets,
-  } = useAppSelector((store) => store.assets);
-
-  const { sum } = useAppSelector((store) => store.portfolio);
-
-  useEffect(() => {
-    dispatch(fetchAssets(offset));
-  }, [offset]);
-
-  useEffect(() => {
-    dispatch(setPortfolio());
-  }, [offset]);
+    data,
+    error,
+    isLoading: loading,
+  } = assetsApi.useFetchAllAssetsQuery({ offset: pageOffset, limit: 50 });
+  const assets = data?.data;
 
   return (
     <div>
-      {sum}
-      {error ? (
+      {error && (
         <StyledError>
           <h4>Something went wrong</h4>
         </StyledError>
-      ) : loading ? (
-        <Loading />
-      ) : (
+      )}
+      {loading && <Loading />}
+      {assets && (
         <>
-          {' '}
           <StyledTable>
             <thead>
               <tr>
@@ -116,16 +53,16 @@ function Main({ children }: PropsWithChildren) {
             <Button
               color="green"
               action={() => {
-                dispatch(setOffset(offset - 50));
+                setPageOffset(pageOffset - 50);
               }}
-              disabled={!offset}
+              disabled={!pageOffset}
             >
               {'<'}
             </Button>
             <Button
               color="green"
               action={() => {
-                dispatch(setOffset(offset + 50));
+                setPageOffset(pageOffset + 50);
               }}
             >
               {'>'}

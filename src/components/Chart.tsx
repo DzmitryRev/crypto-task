@@ -1,3 +1,4 @@
+import React from 'react';
 import {
   ChartOptions,
   Chart as ChartJS,
@@ -11,10 +12,9 @@ import {
   Legend,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
-import React from 'react';
-import styled from 'styled-components';
 import zoomPlugin from 'chartjs-plugin-zoom';
 import { HistoryType } from '../store/assets.model';
+import StyledChart from '../styles/StyledChart';
 
 ChartJS.register(
   CategoryScale,
@@ -27,12 +27,6 @@ ChartJS.register(
   Legend,
   zoomPlugin,
 );
-
-const StyledChart = styled.div`
-  max-width: 1000px;
-  min-height: 350px;
-  margin: 0 auto;
-`;
 
 type ChartPropsType = {
   history: HistoryType[];

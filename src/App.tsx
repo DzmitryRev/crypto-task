@@ -7,8 +7,7 @@ import Asset from './pages/Asset';
 import Main from './pages/Main';
 import Portfolio from './pages/Portfolio';
 import BuyAsset from './pages/BuyAsset';
-
-import { Wrapper } from './styles/wrapper';
+import StyledWrapper from './styles/StyledWrapper';
 
 function App() {
   const navigate = useNavigate();
@@ -16,7 +15,7 @@ function App() {
   const { portfolio, loadPortfolio, assets } = useProfit();
 
   return (
-    <Wrapper>
+    <StyledWrapper>
       <Header />
       <div>
         <Routes>
@@ -96,7 +95,7 @@ function App() {
           />
         </Routes>
       </div>
-    </Wrapper>
+    </StyledWrapper>
   );
 }
 

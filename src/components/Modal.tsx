@@ -1,70 +1,15 @@
-import React, { PropsWithChildren, useEffect } from 'react';
-import styled from 'styled-components';
+import React, { PropsWithChildren } from 'react';
 import ClearIcon from '@mui/icons-material/Clear';
-
-const StyledModalContainer = styled.div`
-  position: fixed;
-  display: ${(props) => (props['aria-hidden'] === true ? 'block' : 'none')};
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background-color: #000000;
-  opacity: 0.3;
-  cursor: pointer;
-`;
-
-const StyledModal = styled.header`
-  position: fixed;
-  display: ${(props) => (props['aria-hidden'] === true ? 'block' : 'none')};
-  width: 320px;
-  min-height: 224px;
-  max-height: 90vh;
-  max-width: 90vh;
-  overflow-y: scroll;
-  border-radius: 10px;
-  background-color: #ffffff;
-  border: 1px solid #c6c6c6;
-  box-shadow: 0 0 10px 0 rgba(34, 60, 80, 0.2);
-  padding: 30px 20px 20px 20px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  .close-btn {
-    position: absolute;
-    right: 0;
-    top: 0;
-  }
-  ::-webkit-scrollbar {
-    width: 0;
-  }
-`;
+import { StyledModal, StyledModalContainer } from '../styles/StyledModal';
+import useModal from '../hooks/useModal';
 
 type ModalPropsType = {
   isOpen: boolean;
   closeCallback: () => void;
 };
 
-export default function Modal({
-  isOpen,
-  closeCallback,
-  children,
-}: PropsWithChildren<ModalPropsType>) {
-  if (isOpen) {
-    document.body.style.overflow = 'hidden';
-  }
-  const closeModal = () => {
-    closeCallback();
-    document.body.style.overflow = 'auto';
-  };
-
-  useEffect(
-    () => () => {
-      document.body.style.overflow = 'auto';
-    },
-    [],
-  );
-
+function Modal({ isOpen, closeCallback, children }: PropsWithChildren<ModalPropsType>) {
+  const { closeModal } = useModal(isOpen, closeCallback);
   return (
     <>
       <StyledModalContainer aria-hidden={isOpen} onClick={closeModal} />
@@ -82,3 +27,5 @@ export default function Modal({
     </>
   );
 }
+
+export default Modal;

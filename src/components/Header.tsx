@@ -1,49 +1,43 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { fetchTopRankAssets } from '../store/slices/ratingSlise';
-import { useAppDispatch, useAppSelector } from '../store/store';
-import StyledHeader from '../styles/header';
+import assetsApi from '../store/api/AssetsApi';
+import { useAppSelector } from '../store/store';
+import StyledHeader from '../styles/StyledHeader';
 import ButtonLink from './Link';
 
 export default function Header() {
-  const dispatch = useAppDispatch();
-  const { topRankAssets, loading, error } = useAppSelector((store) => store.rating);
   const { sum, profit } = useAppSelector((store) => store.portfolio);
+  const { data } = assetsApi.useFetchAllAssetsQuery({ offset: 0, limit: 3 }, {
+    pollingInterval: 1000,
+  });
+  const topAssets = data?.data;
 
   const location = useLocation();
 
-  useEffect(() => {
-    dispatch(fetchTopRankAssets());
-  }, []);
-
   return (
     <StyledHeader>
-      {error ? (
-        <div />
-      ) : (
+      {topAssets && (
         <div className="top-curr-container">
-          {loading
-            ? ''
-            : topRankAssets.map((item) => (
-              <Link to={`asset/${item.id}`} key={item.id}>
-                <div className="top-curr">
-                  {item.name}
-                  {' '}
-                  <span
-                    className={`top-curr-profit ${
-                      Number(item.changePercent24Hr) < 0 ? 'color-red' : 'color-green'
-                    }`}
-                  >
-                    {Number(item.changePercent24Hr).toFixed(2)}
-                    %
-                  </span>
-                </div>
-              </Link>
-            ))}
+          {topAssets?.map((item) => (
+            <Link to={`asset/${item.id}`} key={item.id}>
+              <div className="top-curr">
+                {item.name}
+                <span
+                  className={`top-curr-profit ${
+                    +item.changePercent24Hr < 0 ? 'color-red' : 'color-green'
+                  }`}
+                >
+                  {(+item.changePercent24Hr).toFixed(2)}
+                  %
+                </span>
+              </div>
+            </Link>
+          ))}
         </div>
       )}
+
       <div>
-        {sum ? (
+        {true ? (
           <h4>
             {sum.toFixed(2)}
             <div>
