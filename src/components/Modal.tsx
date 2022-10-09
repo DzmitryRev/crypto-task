@@ -12,8 +12,13 @@ function Modal({ isOpen, closeCallback, children }: PropsWithChildren<ModalProps
   const { closeModal } = useModal(isOpen, closeCallback);
   return (
     <>
-      <StyledModalContainer aria-hidden={isOpen} onClick={closeModal} />
+      <StyledModalContainer
+        data-testid="modal-shadow"
+        aria-hidden={isOpen}
+        onClick={closeModal}
+      />
       <StyledModal
+        data-testid="modal"
         aria-hidden={isOpen}
         onClick={(e) => {
           e.stopPropagation();
@@ -21,7 +26,12 @@ function Modal({ isOpen, closeCallback, children }: PropsWithChildren<ModalProps
       >
         {children}
         <div className="close-btn">
-          <ClearIcon fontSize="large" color="inherit" onClick={closeModal} />
+          <ClearIcon
+            data-testid="modal-close-btn"
+            fontSize="large"
+            color="inherit"
+            onClick={closeModal}
+          />
         </div>
       </StyledModal>
     </>
