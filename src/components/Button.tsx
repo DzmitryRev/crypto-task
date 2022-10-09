@@ -12,6 +12,7 @@ function Button({
 }: PropsWithChildren<ButtonPropsType>) {
   return (
     <StyledButton
+      data-testid="button"
       color={color}
       onClick={() => {
         if (action) action();
