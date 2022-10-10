@@ -28,5 +28,6 @@
               "state"
             ]
         }]
-    }
+    },
+    "ignorePatterns": ["*.test.tsx"]
 }

@@ -1,12 +1,9 @@
-/* eslint-disable no-undef */
-/* eslint-disable react/react-in-jsx-scope */
-/* eslint-disable react/jsx-filename-extension */
 import { fireEvent, render, screen } from '@testing-library/react';
 import Button from './Button';
 import 'jest-styled-components';
 
 test('Button children prop test', () => {
-  render(<Button>Hello</Button>);
+  render(<Button color="red">Hello</Button>);
   const helloButton = screen.getByTestId('button');
   expect(helloButton).toBeInTheDocument();
   expect(helloButton).toHaveTextContent('Hello');
@@ -22,14 +19,14 @@ test('Button color prop test', () => {
 });
 
 test('Button disbled prop test', () => {
-  render(<Button disabled>Hello</Button>);
+  render(<Button color="red" disabled>Hello</Button>);
   const greenButton = screen.getByTestId('button');
   expect(greenButton).toHaveAttribute('disabled');
 });
 
 test('Button action prop test', () => {
   const handleClick = jest.fn();
-  render(<Button action={() => { handleClick(); }}>Hello</Button>);
+  render(<Button color="red" action={() => { handleClick(); }}>Hello</Button>);
   const button = screen.getByTestId('button');
   fireEvent.click(button);
   expect(handleClick).toBeCalled();

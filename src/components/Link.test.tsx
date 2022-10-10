@@ -1,6 +1,3 @@
-/* eslint-disable no-undef */
-/* eslint-disable react/react-in-jsx-scope */
-/* eslint-disable react/jsx-filename-extension */
 import { render, screen } from '@testing-library/react';
 import 'jest-styled-components';
 import { BrowserRouter, MemoryRouter } from 'react-router-dom';
@@ -9,7 +6,7 @@ import ButtonLink from './Link';
 test('Link children prop test', () => {
   render(
     <BrowserRouter>
-      <ButtonLink path="/">Hello</ButtonLink>
+      <ButtonLink color="red" path="/">Hello</ButtonLink>
     </BrowserRouter>,
   );
   const helloLinkButton = screen.getByTestId('link');
