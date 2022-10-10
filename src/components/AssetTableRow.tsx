@@ -14,7 +14,7 @@ function AssetTableRow({
   id, name, symbol, price, changePerDay,
 }: AssetTableRowPropsType) {
   return (
-    <tr>
+    <tr data-testid="table-row">
       <td className="name-td">
         <Link to={`asset/${id}`}>{name}</Link>
       </td>

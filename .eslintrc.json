@@ -29,5 +29,5 @@
             ]
         }]
     },
-    "ignorePatterns": ["*.test.tsx"]
+    "ignorePatterns": ["*.test.tsx", "*.test.ts"]
 }
