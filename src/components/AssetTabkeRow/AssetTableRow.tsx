@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import ButtonLink from './Link';
+import ButtonLink from '../Link/Link';
 
 type AssetTableRowPropsType = {
   id: string;

@@ -1,7 +1,7 @@
 import React, { PropsWithChildren } from 'react';
 import ClearIcon from '@mui/icons-material/Clear';
-import { StyledModal, StyledModalContainer } from '../styles/StyledModal';
-import useModal from '../hooks/useModal';
+import { StyledModal, StyledModalContainer } from './styles';
+import useModal from '../../hooks/useModal';
 
 type ModalPropsType = {
   isOpen: boolean;

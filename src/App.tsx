@@ -1,12 +1,12 @@
 import React from 'react';
 import { Route, Routes, useNavigate } from 'react-router-dom';
-import Header from './components/Header';
-import Modal from './components/Modal';
+import Header from './components/Header/Header';
+import Modal from './components/Modal/Modal';
 import Asset from './pages/Asset';
 import Main from './pages/Main';
 import Portfolio from './pages/Portfolio';
 import BuyAsset from './pages/BuyAsset';
-import StyledWrapper from './styles/StyledWrapper';
+import { StyledWrapper } from './styles';
 
 function App() {
   const navigate = useNavigate();

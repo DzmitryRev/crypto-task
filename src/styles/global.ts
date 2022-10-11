@@ -27,11 +27,7 @@ export default createGlobalStyle`
             cursor: pointer;
         }
     }
-    :root {
-        --blue-color: #4d94ff;
-        --green-color: #00b33c;
-        --red-color: #ff4d4d;
-    }
+
     ::-webkit-scrollbar {
     width: 5px;
     }

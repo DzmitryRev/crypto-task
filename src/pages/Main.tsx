@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
 import { Outlet } from 'react-router-dom';
-import AssetField from '../components/AssetTableRow';
-import Button from '../components/Button';
-import Loading from '../components/Loading';
+import AssetField from '../components/AssetTabkeRow/AssetTableRow';
+import Button from '../components/Button/Button';
+import Loading from '../components/Loading/Loading';
 import assetsApi from '../store/api/AssetsApi';
-import StyledError from '../styles/StyledError';
-import StyledPagination from '../styles/StyledPagination';
-import StyledTable from '../styles/StyledTable';
+import { StyledError, StyledPagination, StyledTable } from '../styles';
 
 function Main() {
   const [pageOffset, setPageOffset] = useState(0);
@@ -14,9 +12,12 @@ function Main() {
     data,
     error,
     isFetching: loading,
-  } = assetsApi.useFetchAllAssetsQuery({ offset: pageOffset, limit: 50 }, {
-    refetchOnMountOrArgChange: true,
-  });
+  } = assetsApi.useFetchAllAssetsQuery(
+    { offset: pageOffset, limit: 50 },
+    {
+      refetchOnMountOrArgChange: true,
+    },
+  );
   const assets = data?.data;
 
   return (

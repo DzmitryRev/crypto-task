@@ -1,6 +1,6 @@
 import { CircularProgress } from '@mui/material';
 import React from 'react';
-import StyledLoadingContainer from '../styles/StyledLoadingContainer';
+import StyledLoadingContainer from './styles';
 
 function Loading() {
   return (

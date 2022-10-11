@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import usePortfolio from '../hooks/usePortfolio';
-import assetsApi from '../store/api/AssetsApi';
-import StyledHeader from '../styles/StyledHeader';
-import ButtonLink from './Link';
+import usePortfolio from '../../hooks/usePortfolio';
+import assetsApi from '../../store/api/AssetsApi';
+import StyledHeader from './styles';
+import ButtonLink from '../Link/Link';
 
 export default function Header() {
   const { sum, profit } = usePortfolio();

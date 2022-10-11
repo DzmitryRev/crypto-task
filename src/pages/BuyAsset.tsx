@@ -2,12 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import PortfolioStorage from '../services/localStorage.service';
 import { useAppDispatch } from '../store/store';
-import Button from '../components/Button';
-import Loading from '../components/Loading';
+import Button from '../components/Button/Button';
+import Loading from '../components/Loading/Loading';
 import { setPortfolio } from '../store/slices/portfolioSlice';
-import StyledError from '../styles/StyledError';
 import assetsApi from '../store/api/AssetsApi';
-import StyledBuyAsset from '../styles/StyledBuyAsset';
+import { StyledBuyAsset, StyledError } from '../styles';
 
 function BuyAsset() {
   const { assetId } = useParams();

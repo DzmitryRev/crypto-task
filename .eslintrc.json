@@ -29,5 +29,5 @@
             ]
         }]
     },
-    "ignorePatterns": ["*.test.tsx", "*.test.ts"]
+    "ignorePatterns": ["*.test.tsx", "*.test.ts", "src/stories/*.tsx"]
 }
