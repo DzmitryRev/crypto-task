@@ -1,11 +1,13 @@
 import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-function useModal(isOpen: boolean, closeCallback: () => void) {
-  if (isOpen) {
-    document.body.style.overflow = 'hidden';
-  }
+function useModal() {
+  const navigate = useNavigate();
+
+  document.body.style.overflow = 'hidden';
+
   const closeModal = () => {
-    closeCallback();
+    navigate(-1);
     document.body.style.overflow = 'auto';
   };
 

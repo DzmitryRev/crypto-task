@@ -46,11 +46,11 @@ function Asset() {
                   )
                 </h2>
                 <p>
-                  {Number(asset.priceUsd).toFixed(2)}
+                  {(+asset.priceUsd).toFixed(2)}
                   $
                 </p>
                 <p className="change-block">
-                  {Number(asset.changePercent24Hr).toFixed(2)}
+                  {(+asset.changePercent24Hr).toFixed(2)}
                   %
                 </p>
 

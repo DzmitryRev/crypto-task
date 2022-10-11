@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Routes, useNavigate } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import Header from './components/Header/Header';
 import Modal from './components/Modal/Modal';
 import Asset from './pages/Asset';
@@ -9,42 +9,24 @@ import BuyAsset from './pages/BuyAsset';
 import { StyledWrapper } from './styles';
 
 function App() {
-  const navigate = useNavigate();
-
-  const PortfolioModal = (
-    <Modal
-      isOpen
-      closeCallback={() => {
-        navigate(-1);
-      }}
-    >
-      <Portfolio />
-    </Modal>
-  );
-
-  const BuyAssetModal = (
-    <Modal
-      isOpen
-      closeCallback={() => {
-        navigate(-1);
-      }}
-    >
-      <BuyAsset />
-    </Modal>
-  );
-
   return (
     <StyledWrapper>
       <Header />
       <div>
         <Routes>
           <Route path="/" element={<Main />}>
-            <Route path="portfolio" element={PortfolioModal} />
-            <Route path="buy/:assetId" element={BuyAssetModal} />
+            <Route path="portfolio" element={<Modal><Portfolio /></Modal>} />
+            <Route
+              path="buy/:assetId"
+              element={(<Modal><BuyAsset /></Modal>)}
+            />
           </Route>
           <Route path="/asset/:assetId" element={<Asset />}>
-            <Route path="buy/:assetId" element={BuyAssetModal} />
-            <Route path="portfolio" element={PortfolioModal} />
+            <Route
+              path="buy/:assetId"
+              element={(<Modal><BuyAsset /></Modal>)}
+            />
+            <Route path="portfolio" element={<Modal><Portfolio /></Modal>} />
           </Route>
         </Routes>
       </div>

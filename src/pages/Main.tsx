@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Outlet } from 'react-router-dom';
-import AssetField from '../components/AssetTabkeRow/AssetTableRow';
+import AssetField from '../components/AssetTableRow/AssetTableRow';
 import Button from '../components/Button/Button';
 import Loading from '../components/Loading/Loading';
 import assetsApi from '../store/api/AssetsApi';

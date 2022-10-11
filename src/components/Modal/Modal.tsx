@@ -3,23 +3,14 @@ import ClearIcon from '@mui/icons-material/Clear';
 import { StyledModal, StyledModalContainer } from './styles';
 import useModal from '../../hooks/useModal';
 
-type ModalPropsType = {
-  isOpen: boolean;
-  closeCallback: () => void;
-};
-
-function Modal({ isOpen, closeCallback, children }: PropsWithChildren<ModalPropsType>) {
-  const { closeModal } = useModal(isOpen, closeCallback);
+function Modal({ children }: PropsWithChildren) {
+  const { closeModal } = useModal();
   return (
     <>
-      <StyledModalContainer
-        data-testid="modal-shadow"
-        aria-hidden={isOpen}
-        onClick={closeModal}
-      />
+      <StyledModalContainer data-testid="modal-shadow" aria-hidden="true" onClick={closeModal} />
       <StyledModal
         data-testid="modal"
-        aria-hidden={isOpen}
+        aria-hidden="true"
         onClick={(e) => {
           e.stopPropagation();
         }}

@@ -1,26 +1,27 @@
 import React from 'react';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
-import styled from 'styled-components';
+// import styled from 'styled-components';
 import PortfolioStorage from '../services/localStorage.service';
 import usePortfolio from '../hooks/usePortfolio';
+import { StyledTable } from '../styles';
 
-const StyledTable = styled.table`
-  width: 100%;
-  font-size: 14px;
-  td {
-    max-width: 100px;
-    font-weight: 500;
-    padding: 5px;
-    text-align: center;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-  thead {
-    td {
-      font-weight: 700;
-    }
-  }
-`;
+// const StyledTable = styled.table`
+//   width: 100%;
+//   font-size: 14px;
+//   td {
+//     max-width: 100px;
+//     font-weight: 500;
+//     padding: 5px;
+//     text-align: center;
+//     overflow: hidden;
+//     text-overflow: ellipsis;
+//   }
+//   thead {
+//     td {
+//       font-weight: 700;
+//     }
+//   }
+// `;
 
 function Portfolio() {
   const { portfolio, assets, loadPortfolio } = usePortfolio();

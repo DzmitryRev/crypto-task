@@ -1,10 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 
 export default createGlobalStyle`
-    html {
-        overflow-x: hidden;
-        margin-right: calc(-1 * (100vw - 100%));
-    }
     *{
         margin: 0;
         padding: 0;

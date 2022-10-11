@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const StyledModalContainer = styled.div`
   position: fixed;
-  display: ${(props) => (props['aria-hidden'] === true ? 'block' : 'none')};
+  display: block;
   top: 0;
   bottom: 0;
   left: 0;
@@ -13,7 +13,7 @@ export const StyledModalContainer = styled.div`
 
 export const StyledModal = styled.header`
   position: fixed;
-  display: ${(props) => (props['aria-hidden'] === true ? 'block' : 'none')};
+  display: block;
   min-height: 224px;
   width: 320px;
   max-height: 90vh;

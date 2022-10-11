@@ -76,6 +76,7 @@ export const StyledPagination = styled.div`
 
 export const StyledTable = styled.table`
   margin: 0 auto;
+  max-width: 100%;
   font-weight: 500;
   font-size: 16px;
   line-height: 40px;
