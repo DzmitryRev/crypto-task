@@ -25,7 +25,7 @@ function Modal({ isOpen, closeCallback, children }: PropsWithChildren<ModalProps
         }}
       >
         {children}
-        <div className="close-btn">
+        <div className="close-button">
           <ClearIcon
             data-testid="modal-close-btn"
             fontSize="large"

@@ -1,6 +1,10 @@
 import { createGlobalStyle } from 'styled-components';
 
 export default createGlobalStyle`
+    html {
+        overflow-x: hidden;
+        margin-right: calc(-1 * (100vw - 100%));
+    }
     *{
         margin: 0;
         padding: 0;
@@ -8,6 +12,7 @@ export default createGlobalStyle`
         cursor: default;
     }
     body{
+        position: relative;
         font-family: 'Montserrat', sans-serif;
         scroll-behavior: smooth;
     }
