@@ -14,7 +14,7 @@ function Asset() {
     error,
     isLoading: loading,
   } = assetsApi.useFetchAssetQuery(assetId || '', {
-    pollingInterval: 1000,
+    pollingInterval: 5000,
   });
   const asset = data?.data;
 

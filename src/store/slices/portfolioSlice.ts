@@ -34,7 +34,9 @@ export const portfolioSlice = createSlice({
       state.assets = [];
     },
     setPortfolio(state) {
-      state.portfolio = PortfolioStorage.getPortfolio();
+      const portfolio = PortfolioStorage.getPortfolio();
+      if (JSON.stringify(portfolio) === JSON.stringify(state.portfolio)) return;
+      state.portfolio = portfolio;
       state.sum = calculateSum(state.portfolio);
     },
   },

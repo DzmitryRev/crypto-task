@@ -10,7 +10,7 @@ function Table({ children }: PropsWithChildren) {
           <StyledTableCell>Name</StyledTableCell>
           <StyledTableCell breakpoint="600">Symbol</StyledTableCell>
           <StyledTableCell breakpoint="498">$</StyledTableCell>
-          <StyledTableCell breakpoint="398">%</StyledTableCell>
+          <StyledTableCell>%</StyledTableCell>
         </tr>
       </thead>
       <tbody>

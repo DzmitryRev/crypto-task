@@ -4,6 +4,7 @@ import styled from 'styled-components';
 export const StyledTable = styled.table`
   margin: 0 auto;
   max-width: 600px;
+  width: 100%;
   font-weight: 500;
   font-size: 16px;
   line-height: 40px;
@@ -22,6 +23,7 @@ export const StyledTable = styled.table`
 type StyledTableCellProps = {
   breakpoint?: string;
   clicable?: boolean;
+  maxWidth?: number;
 };
 
 export const StyledTableCell = styled.td<StyledTableCellProps>`
@@ -29,6 +31,8 @@ export const StyledTableCell = styled.td<StyledTableCellProps>`
   text-overflow: ellipsis;
   white-space: nowrap;
   padding: 0 15px;
+  max-width: ${(props) => props.maxWidth}px;
+  width: ${(props) => props.maxWidth}px;
   ${(props) => props.clicable
     && `cursor: pointer;
     &:hover {

@@ -1,5 +1,5 @@
 import React, { PropsWithChildren } from 'react';
-import StyledButton from './styles';
+import StyledButton from './StyledButton';
 
 type ButtonPropsType = {
   color: 'blue' | 'green' | 'red';

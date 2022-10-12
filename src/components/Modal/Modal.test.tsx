@@ -19,20 +19,20 @@ import Modal from './Modal';
 //   expect(closeCallback).toBeCalledTimes(2);
 // });
 
-test('Modal children prop test', () => {
-  render(
-    <Modal>Hello</Modal>,
-  );
-  const modal = screen.getByTestId('modal');
-  expect(modal).toBeInTheDocument();
-  expect(modal).toHaveTextContent('Hello');
-});
-
-// test('Modal isOpen prop test', () => {
+// test('Modal children prop test', () => {
 //   render(
 //     <Modal>Hello</Modal>,
 //   );
 //   const modal = screen.getByTestId('modal');
 //   expect(modal).toBeInTheDocument();
-//   expect(modal).not.toBeVisible();
+//   expect(modal).toHaveTextContent('Hello');
 // });
+
+// // test('Modal isOpen prop test', () => {
+// //   render(
+// //     <Modal>Hello</Modal>,
+// //   );
+// //   const modal = screen.getByTestId('modal');
+// //   expect(modal).toBeInTheDocument();
+// //   expect(modal).not.toBeVisible();
+// // });

@@ -1,12 +1,12 @@
-import { CircularProgress } from '@mui/material';
 import React from 'react';
-import StyledLoadingContainer from './styles';
+import { StyledLoading, StyledLoadingContainer } from './StyledLoading';
 
 function Loading() {
   return (
     <StyledLoadingContainer>
-      <CircularProgress data-testid="loading" className="loading-gif" />
+      <StyledLoading data-testid="loading" />
     </StyledLoadingContainer>
+
   );
 }
 

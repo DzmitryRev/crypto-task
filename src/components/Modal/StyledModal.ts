@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const StyledModalContainer = styled.div`
+export const StyledModalShadow = styled.div`
   position: fixed;
   display: block;
   top: 0;
@@ -11,12 +11,16 @@ export const StyledModalContainer = styled.div`
   cursor: pointer;
 `;
 
-export const StyledModal = styled.header`
+type StyledModalProps = {
+  type: 'default' | 'minify';
+};
+
+export const StyledModal = styled.div<StyledModalProps>`
   position: fixed;
   display: block;
   min-height: 224px;
   min-width: 320px;
-  width: 560px;
+  width: ${(props) => (props.type === 'default' ? 560 : 320)}px;
   max-height: 90vh;
   overflow-y: scroll;
   border-radius: 10px;
@@ -35,11 +39,12 @@ export const StyledModal = styled.header`
   ::-webkit-scrollbar {
     width: 0;
   }
-
+  ${(props) => props.type === 'default'
+    && `
   @media screen and (max-width: 600px) {
     width: 460px;
   }
   @media screen and (max-width: 500px) {
     width: 320px;
-  }
+  }`}
 `;

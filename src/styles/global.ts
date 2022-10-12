@@ -11,6 +11,7 @@ export default createGlobalStyle`
         position: relative;
         font-family: 'Montserrat', sans-serif;
         scroll-behavior: smooth;
+        min-height: 100vh;
     }
     a{
         text-decoration: none;

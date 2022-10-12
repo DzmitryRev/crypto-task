@@ -15,18 +15,40 @@ function App() {
       <div>
         <Routes>
           <Route path="/" element={<Main />}>
-            <Route path="portfolio" element={<Modal><Portfolio /></Modal>} />
+            <Route
+              path="portfolio"
+              element={(
+                <Modal type="default">
+                  <Portfolio />
+                </Modal>
+              )}
+            />
             <Route
               path="buy/:assetId"
-              element={(<Modal><BuyAsset /></Modal>)}
+              element={(
+                <Modal type="minify">
+                  <BuyAsset />
+                </Modal>
+              )}
             />
           </Route>
           <Route path="/asset/:assetId" element={<Asset />}>
             <Route
               path="buy/:assetId"
-              element={(<Modal><BuyAsset /></Modal>)}
+              element={(
+                <Modal type="minify">
+                  <BuyAsset />
+                </Modal>
+              )}
             />
-            <Route path="portfolio" element={<Modal><Portfolio /></Modal>} />
+            <Route
+              path="portfolio"
+              element={(
+                <Modal type="default">
+                  <Portfolio />
+                </Modal>
+              )}
+            />
           </Route>
         </Routes>
       </div>

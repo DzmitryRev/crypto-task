@@ -10,7 +10,7 @@ export default function Header() {
   const { data } = assetsApi.useFetchAllAssetsQuery(
     { offset: 0, limit: 3 },
     {
-      pollingInterval: 1000,
+      pollingInterval: 5000,
     },
   );
   const topAssets = data?.data;
