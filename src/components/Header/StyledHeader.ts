@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import Variables from '../../styles/variables';
 
 const StyledHeader = styled.header`
   height: 70px;
@@ -7,7 +8,7 @@ const StyledHeader = styled.header`
   align-items: center;
   margin-bottom: 40px;
   .top-curr-container {
-    @media screen and (max-width: 468px) {
+    @media screen and (max-width: ${Variables.bp.m}px) {
       display: none;
     }
   }

@@ -4,7 +4,7 @@ import styled from 'styled-components';
 export const StyledTable = styled.table`
   margin: 0 auto;
   max-width: 600px;
-  width: 100%;
+  /* width: 100%; */
   font-weight: 500;
   font-size: 16px;
   line-height: 40px;

@@ -8,6 +8,7 @@ import TableRow from '../components/TableRow/TableRow';
 import assetsApi from '../store/api/AssetsApi';
 import { StyledError, StyledPagination } from '../styles';
 import { StyledTableCell } from '../components/Table/StyledTable';
+import Variables from '../styles/variables';
 
 function Main() {
   const [pageOffset, setPageOffset] = useState(0);
@@ -39,9 +40,9 @@ function Main() {
                 <StyledTableCell clicable>
                   <Link to={`/asset/${item.id}`}>{item.name}</Link>
                 </StyledTableCell>
-                <StyledTableCell breakpoint="600">{item.symbol}</StyledTableCell>
-                <StyledTableCell breakpoint="498">{(+item.priceUsd).toFixed(2)}</StyledTableCell>
-                <StyledTableCell breakpoint="398">{(+item.changePercent24Hr).toFixed(2)}</StyledTableCell>
+                <StyledTableCell breakpoint={`${Variables.bp.l}`}>{item.symbol}</StyledTableCell>
+                <StyledTableCell breakpoint={`${Variables.bp.m}`}>{(+item.priceUsd).toFixed(2)}</StyledTableCell>
+                <StyledTableCell breakpoint={`${Variables.bp.s}`}>{(+item.changePercent24Hr).toFixed(2)}</StyledTableCell>
                 <StyledTableCell>
                   <ButtonLink color="green" path={`buy/${item.id}`}>
                     add

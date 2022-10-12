@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import usePortfolio from '../../hooks/usePortfolio';
 import assetsApi from '../../store/api/AssetsApi';
-import StyledHeader from './styles';
+import StyledHeader from './StyledHeader';
 import ButtonLink from '../Link/Link';
 
 export default function Header() {

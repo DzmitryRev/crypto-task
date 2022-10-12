@@ -1,8 +1,13 @@
 /* eslint-disable no-nested-ternary */
 import styled from 'styled-components';
+import Variables from '../../styles/variables';
 
 const StyledButton = styled.button`
-  background-color: ${(props) => (props.color === 'blue' ? '#4d94ff' : props.color === 'red' ? '#ff4d4d' : '#00b33c')};
+  background-color: ${(props) => (props.color === 'blue'
+    ? Variables.colors.blue
+    : props.color === 'red'
+      ? Variables.colors.red
+      : Variables.colors.green)};
   color: #fff;
   padding: 10px 10px;
   font-size: 14px;

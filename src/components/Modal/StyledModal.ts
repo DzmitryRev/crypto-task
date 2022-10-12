@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import Variables from '../../styles/variables';
 
 export const StyledModalShadow = styled.div`
   position: fixed;
@@ -41,10 +42,10 @@ export const StyledModal = styled.div<StyledModalProps>`
   }
   ${(props) => props.type === 'default'
     && `
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: ${Variables.bp.l}px) {
     width: 460px;
   }
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: ${Variables.bp.m}px) {
     width: 320px;
   }`}
 `;

@@ -8,6 +8,7 @@ import TableRow from '../components/TableRow/TableRow';
 import PortfolioStorage from '../services/localStorage.service';
 import usePortfolio from '../hooks/usePortfolio';
 import { StyledTableCell } from '../components/Table/StyledTable';
+import Variables from '../styles/variables';
 
 function Portfolio() {
   const { portfolio, assets, loadPortfolio } = usePortfolio();
@@ -25,8 +26,8 @@ function Portfolio() {
                 <StyledTableCell maxWidth={110} clicable>
                   <Link to={`/asset/${item.asset.id}`}>{item.asset.name}</Link>
                 </StyledTableCell>
-                <StyledTableCell breakpoint="600">{item.asset.symbol}</StyledTableCell>
-                <StyledTableCell maxWidth={90} breakpoint="498">
+                <StyledTableCell breakpoint={`${Variables.bp.l}`}>{item.asset.symbol}</StyledTableCell>
+                <StyledTableCell maxWidth={90} breakpoint={`${Variables.bp.m}`}>
                   {currentPrice ? currentPrice.toFixed(2) : '...'}
                 </StyledTableCell>
                 <StyledTableCell maxWidth={75}>
