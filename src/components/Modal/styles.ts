@@ -15,7 +15,8 @@ export const StyledModal = styled.header`
   position: fixed;
   display: block;
   min-height: 224px;
-  width: 320px;
+  min-width: 320px;
+  width: 560px;
   max-height: 90vh;
   overflow-y: scroll;
   border-radius: 10px;
@@ -33,5 +34,12 @@ export const StyledModal = styled.header`
   }
   ::-webkit-scrollbar {
     width: 0;
+  }
+
+  @media screen and (max-width: 600px) {
+    width: 460px;
+  }
+  @media screen and (max-width: 500px) {
+    width: 320px;
   }
 `;

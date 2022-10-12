@@ -95,31 +95,20 @@ export const StyledTable = styled.table`
       height: 100%;
     }
   }
-  .name-td {
-    max-width: 200px;
-    min-width: 150px;
-    cursor: pointer;
-    &:hover {
-      background-color: rgba(103, 77, 232, 0.3);
-    }
-  }
-  .price-td,
-  .change-td {
-    max-width: 100px;
+
+  .symbol-td-head {
     @media screen and (max-width: 600px) {
       display: none;
     }
   }
-  .change-td {
-    text-align: right;
-  }
-  .price-td,
-  .change-td,
-  .symbol-td,
-  .symbol-td-head,
-  .price-td-head,
   .profit-td-head {
-    @media screen and (max-width: 600px) {
+    @media screen and (max-width: 498px) {
+      display: none;
+    }
+  }
+
+  .price-td-head {
+    @media screen and (max-width: 398px) {
       display: none;
     }
   }
