@@ -2,11 +2,11 @@ import { render, screen } from '@testing-library/react';
 import 'jest-styled-components';
 import Loading from './Loading';
 
-test('Loading component test', () => {
+test('Loading component reder test', () => {
   render(
     <Loading />,
   );
   const loading = screen.getByTestId('loading');
   expect(loading).toBeInTheDocument();
-  expect(loading).toHaveClass('loading-gif');
+  expect(loading).toHaveStyleRule("position", "absolute");
 });

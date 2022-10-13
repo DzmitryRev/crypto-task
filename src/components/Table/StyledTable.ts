@@ -21,7 +21,7 @@ export const StyledTable = styled.table`
 `;
 
 type StyledTableCellProps = {
-  breakpoint?: string;
+  breakpoint?: number;
   clicable?: boolean;
   maxWidth?: number;
 };

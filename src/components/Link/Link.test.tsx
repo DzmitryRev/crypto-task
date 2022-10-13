@@ -1,6 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import 'jest-styled-components';
 import { BrowserRouter, MemoryRouter } from 'react-router-dom';
+import Variables from "../../styles/variables";
 import ButtonLink from './Link';
 
 test('Link children prop test', () => {
@@ -24,9 +25,9 @@ test('Link color prop test', () => {
     </BrowserRouter>,
   );
   const greenLinkButton = screen.getByTestId('link');
-  expect(greenLinkButton).toHaveStyleRule('background-color', 'var(--red-color)');
-  expect(greenLinkButton).not.toHaveStyleRule('background-color', 'var(--green-color)');
-  expect(greenLinkButton).not.toHaveStyleRule('background-color', 'var(--blue-color)');
+  expect(greenLinkButton).toHaveStyleRule('background-color', Variables.colors.red);
+  expect(greenLinkButton).not.toHaveStyleRule('background-color', Variables.colors.green);
+  expect(greenLinkButton).not.toHaveStyleRule('background-color', Variables.colors.blue);
 });
 
 test('Link path prop test', async () => {

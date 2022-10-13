@@ -1,6 +1,6 @@
 /* eslint-disable linebreak-style */
-import React, { PropsWithChildren } from 'react';
+import React, { PropsWithChildren } from "react";
 
 export default function TableRow({ children }: PropsWithChildren) {
-  return <tr>{children}</tr>;
+  return <tr data-testid="table-row">{children}</tr>;
 }

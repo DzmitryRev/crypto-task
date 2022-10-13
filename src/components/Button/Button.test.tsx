@@ -1,6 +1,7 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import Button from './Button';
 import 'jest-styled-components';
+import Variables from "../../styles/variables";
 
 test('Button children prop test', () => {
   render(<Button color="red">Hello</Button>);
@@ -13,9 +14,9 @@ test('Button children prop test', () => {
 test('Button color prop test', () => {
   render(<Button color="green">Hello</Button>);
   const greenButton = screen.getByTestId('button');
-  expect(greenButton).toHaveStyleRule('background-color', 'var(--green-color)');
-  expect(greenButton).not.toHaveStyleRule('background-color', 'var(--red-color)');
-  expect(greenButton).not.toHaveStyleRule('background-color', 'var(--blue-color)');
+  expect(greenButton).toHaveStyleRule('background-color', Variables.colors.green);
+  expect(greenButton).not.toHaveStyleRule('background-color', Variables.colors.red);
+  expect(greenButton).not.toHaveStyleRule('background-color', Variables.colors.blue);
 });
 
 test('Button disbled prop test', () => {

@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
-import { Link, Outlet } from 'react-router-dom';
-import Table from '../components/Table/Table';
-import Button from '../components/Button/Button';
-import ButtonLink from '../components/Link/Link';
-import Loading from '../components/Loading/Loading';
-import TableRow from '../components/TableRow/TableRow';
-import assetsApi from '../store/api/AssetsApi';
-import { StyledError, StyledPagination } from '../styles';
-import { StyledTableCell } from '../components/Table/StyledTable';
-import Variables from '../styles/variables';
+import React, { useState } from "react";
+import { Link, Outlet } from "react-router-dom";
+import Table from "../components/Table/Table";
+import Button from "../components/Button/Button";
+import ButtonLink from "../components/Link/Link";
+import Loading from "../components/Loading/Loading";
+import TableRow from "../components/TableRow/TableRow";
+import assetsApi from "../store/api/AssetsApi";
+import { StyledError, StyledPagination } from "../styles";
+import { StyledTableCell } from "../components/Table/StyledTable";
+import Variables from "../styles/variables";
 
 function Main() {
   const [pageOffset, setPageOffset] = useState(0);
@@ -20,7 +20,7 @@ function Main() {
     { offset: pageOffset, limit: 50 },
     {
       refetchOnMountOrArgChange: true,
-    },
+    }
   );
   const assets = data?.data;
 
@@ -36,19 +36,22 @@ function Main() {
         <>
           <Table>
             {assets.map((item) => (
-              <TableRow>
-                <StyledTableCell clicable>
+              <TableRow key={item.id}>
+                <StyledTableCell maxWidth={180} clicable>
                   <Link to={`/asset/${item.id}`}>{item.name}</Link>
                 </StyledTableCell>
-                <StyledTableCell breakpoint={`${Variables.bp.l}`}>{item.symbol}</StyledTableCell>
-                <StyledTableCell breakpoint={`${Variables.bp.m}`}>{(+item.priceUsd).toFixed(2)}</StyledTableCell>
-                <StyledTableCell breakpoint={`${Variables.bp.s}`}>{(+item.changePercent24Hr).toFixed(2)}</StyledTableCell>
+                <StyledTableCell breakpoint={Variables.bp.l}>{item.symbol}</StyledTableCell>
+                <StyledTableCell breakpoint={Variables.bp.m}>
+                  {(+item.priceUsd).toFixed(2)}
+                </StyledTableCell>
+                <StyledTableCell breakpoint={Variables.bp.s}>
+                  {(+item.changePercent24Hr).toFixed(2)}
+                </StyledTableCell>
                 <StyledTableCell>
                   <ButtonLink color="green" path={`buy/${item.id}`}>
                     add
                   </ButtonLink>
                 </StyledTableCell>
-
               </TableRow>
             ))}
           </Table>
@@ -61,7 +64,7 @@ function Main() {
               }}
               disabled={!pageOffset}
             >
-              {'<'}
+              {"<"}
             </Button>
             <Button
               color="green"
@@ -69,7 +72,7 @@ function Main() {
                 setPageOffset(pageOffset + 50);
               }}
             >
-              {'>'}
+              {">"}
             </Button>
           </StyledPagination>
         </>

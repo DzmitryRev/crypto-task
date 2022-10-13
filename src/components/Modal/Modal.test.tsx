@@ -1,38 +1,35 @@
-import { fireEvent, render, screen } from '@testing-library/react';
-import 'jest-styled-components';
-import Modal from './Modal';
+import { fireEvent, render, screen } from "@testing-library/react";
+import "jest-styled-components";
+import { BrowserRouter } from "react-router-dom";
+import Modal from "./Modal";
 
-// test('Modal close test', () => {
-//   const closeCallback = jest.fn();
-//   render(
-//     <Modal isOpen={true}>Hi</Modal>,
-//   );
-//   const modalShadow = screen.getByTestId('modal-shadow');
-//   const modal = screen.getByTestId('modal');
-//   const modalClose = screen.getByTestId('modal-close-btn');
-//   expect(modalShadow).toBeInTheDocument();
-//   fireEvent.click(modalShadow);
-//   fireEvent.click(modalClose);
-//   // Not called from modal click, call only from shadow or close btn
-//   fireEvent.click(modal);
-//   expect(closeCallback).not.toBeCalledTimes(3);
-//   expect(closeCallback).toBeCalledTimes(2);
-// });
+test("Modal type prop test", () => {
+  render(
+    <BrowserRouter>
+      <Modal type="default">Hi</Modal>
+    </BrowserRouter>
+  );
+  const modal = screen.getByTestId("modal");
+  expect(modal).toHaveStyleRule("width", "560px");
+});
 
-// test('Modal children prop test', () => {
-//   render(
-//     <Modal>Hello</Modal>,
-//   );
-//   const modal = screen.getByTestId('modal');
-//   expect(modal).toBeInTheDocument();
-//   expect(modal).toHaveTextContent('Hello');
-// });
+test("Modal type prop test #2", () => {
+  render(
+    <BrowserRouter>
+      <Modal type="minify">Hi</Modal>
+    </BrowserRouter>
+  );
+  const modal = screen.getByTestId("modal");
+  expect(modal).toHaveStyleRule("width", "320px");
+});
 
-// // test('Modal isOpen prop test', () => {
-// //   render(
-// //     <Modal>Hello</Modal>,
-// //   );
-// //   const modal = screen.getByTestId('modal');
-// //   expect(modal).toBeInTheDocument();
-// //   expect(modal).not.toBeVisible();
-// // });
+test("Modal children prop test", () => {
+  render(
+    <BrowserRouter>
+      <Modal type="minify">Hello</Modal>
+    </BrowserRouter>
+  );
+  const modal = screen.getByTestId("modal");
+  expect(modal).toBeInTheDocument();
+  expect(modal).toHaveTextContent("Hello");
+});
