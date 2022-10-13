@@ -38,6 +38,7 @@ export const portfolioSlice = createSlice({
       if (JSON.stringify(portfolio) === JSON.stringify(state.portfolio)) return;
       state.portfolio = portfolio;
       state.sum = calculateSum(state.portfolio);
+      console.log(state.sum);
     },
   },
   extraReducers: (builder) => {

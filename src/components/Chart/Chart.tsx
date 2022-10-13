@@ -10,7 +10,6 @@ type ChartPropsType = {
 
 function Chart({ history }: ChartPropsType) {
   const data = createChartData(history);
-
   return (
     <StyledChart>
       <Line options={chartOptions} data={data} />

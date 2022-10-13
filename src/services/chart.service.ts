@@ -50,8 +50,19 @@ export const chartOptions: ChartOptions<'line'> = {
   },
 };
 
-export function createChartData(history: HistoryType[]) {
-  const data = {
+export type ChartDataType = {
+  labels: string[];
+  datasets: {
+    fill: boolean;
+    label: string;
+    data: string[];
+    borderColor: string;
+    backgroundColor: string;
+  }[];
+};
+
+export function createChartData(history: HistoryType[]): ChartDataType {
+  const data: ChartDataType = {
     labels: history.map((item) => new Date(item.time).toLocaleDateString()),
     datasets: [
       {
