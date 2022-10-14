@@ -1,5 +1,5 @@
-import { HistoryType } from "../store/assets.model";
-import { ChartDataType, createChartData } from "./chart.service";
+import { HistoryType } from "../../store/assets.model";
+import { ChartDataType, createChartData } from "../chart.service";
 
 const mockHistory: HistoryType[] = [
   { date: "2021-10-14T00:00:00.000Z", priceUsd: "10", time: 1634169600000 },

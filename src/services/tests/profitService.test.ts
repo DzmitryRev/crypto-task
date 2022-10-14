@@ -1,6 +1,6 @@
-import { AssetType } from "../store/assets.model";
-import { StorageAssetType } from "./localStorage.service";
-import { calculateProfitSum, calculateSum } from "./profit.service";
+import { AssetType } from "../../store/assets.model";
+import { StorageAssetType } from "../localStorage.service";
+import { calculateProfitSum, calculateSum } from "../profit.service";
 
 const mockAsset: AssetType[] = [
   {

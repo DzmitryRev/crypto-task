@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import "jest-styled-components";
-import Table from "./Table";
+import Table from "../Table";
 
 test("Table component render test", () => {
   render(

@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import "jest-styled-components";
-import { StyledTableCell } from "../Table/StyledTable";
-import TableRow from "./TableRow";
+import { StyledTableCell } from "../../Table/StyledTable";
+import TableRow from "../TableRow";
 
 test("TableRow component render test", () => {
   render(

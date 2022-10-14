@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import 'jest-styled-components';
-import Loading from './Loading';
+import Loading from '../Loading';
 
 test('Loading component reder test', () => {
   render(

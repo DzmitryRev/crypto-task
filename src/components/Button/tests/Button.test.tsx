@@ -1,7 +1,7 @@
 import { fireEvent, render, screen } from '@testing-library/react';
-import Button from './Button';
+import Button from '../Button';
 import 'jest-styled-components';
-import Variables from "../../styles/variables";
+import Variables from "../../../styles/variables";
 
 test('Button children prop test', () => {
   render(<Button color="red">Hello</Button>);

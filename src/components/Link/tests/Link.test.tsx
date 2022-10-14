@@ -1,8 +1,8 @@
 import { render, screen } from '@testing-library/react';
 import 'jest-styled-components';
 import { BrowserRouter, MemoryRouter } from 'react-router-dom';
-import Variables from "../../styles/variables";
-import ButtonLink from './Link';
+import Variables from "../../../styles/variables";
+import ButtonLink from '../Link';
 
 test('Link children prop test', () => {
   render(
