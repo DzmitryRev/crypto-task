@@ -1,14 +1,14 @@
-import React, { useState } from "react";
-import { Link, Outlet } from "react-router-dom";
-import Table from "../components/Table/Table";
-import Button from "../components/Button/Button";
-import ButtonLink from "../components/Link/Link";
-import Loading from "../components/Loading/Loading";
-import TableRow from "../components/TableRow/TableRow";
-import assetsApi from "../store/api/AssetsApi";
-import { StyledError, StyledPagination } from "../styles";
-import { StyledTableCell } from "../components/Table/StyledTable";
-import Variables from "../styles/variables";
+import React, { useState } from 'react';
+import { Link, Outlet } from 'react-router-dom';
+import Table from '../components/Table/Table';
+import Button from '../components/Button/Button';
+import ButtonLink from '../components/Link/Link';
+import Loading from '../components/Loading/Loading';
+import TableRow from '../components/TableRow/TableRow';
+import assetsApi from '../store/api/AssetsApi';
+import { StyledError, StyledPagination } from '../styles';
+import { StyledTableCell } from '../components/Table/StyledTable';
+import Variables from '../styles/variables';
 
 function Main() {
   const [pageOffset, setPageOffset] = useState(0);
@@ -20,10 +20,9 @@ function Main() {
     { offset: pageOffset, limit: 50 },
     {
       refetchOnMountOrArgChange: true,
-    }
+    },
   );
   const assets = data?.data;
-
   return (
     <div>
       {error && (
@@ -64,7 +63,7 @@ function Main() {
               }}
               disabled={!pageOffset}
             >
-              {"<"}
+              {'<'}
             </Button>
             <Button
               color="green"
@@ -72,7 +71,7 @@ function Main() {
                 setPageOffset(pageOffset + 50);
               }}
             >
-              {">"}
+              {'>'}
             </Button>
           </StyledPagination>
         </>

@@ -1,14 +1,14 @@
 /* eslint-disable react/jsx-no-useless-fragment */
-import React from "react";
-import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
-import { Link } from "react-router-dom";
-import Button from "../components/Button/Button";
-import Table from "../components/Table/Table";
-import TableRow from "../components/TableRow/TableRow";
-import PortfolioStorage from "../services/localStorage.service";
-import usePortfolio from "../hooks/usePortfolio";
-import { StyledTableCell } from "../components/Table/StyledTable";
-import Variables from "../styles/variables";
+import React from 'react';
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import { Link } from 'react-router-dom';
+import Button from '../components/Button/Button';
+import Table from '../components/Table/Table';
+import TableRow from '../components/TableRow/TableRow';
+import PortfolioStorage from '../services/localStorage.service';
+import usePortfolio from '../hooks/usePortfolio';
+import { StyledTableCell } from '../components/Table/StyledTable';
+import Variables from '../styles/variables';
 
 function Portfolio() {
   const { portfolio, assets, loadPortfolio } = usePortfolio();
@@ -18,9 +18,8 @@ function Portfolio() {
       {portfolio.length ? (
         <Table>
           {portfolio.map((item) => {
-            const currentPrice =
-              parseFloat(assets.find((i) => i.id === item.asset.id)?.priceUsd || "0") *
-              item.quantity;
+            const currentPrice = parseFloat(assets.find((i) => i.id === item.asset.id)?.priceUsd || '0')
+              * item.quantity;
 
             return (
               <TableRow key={item.id}>
@@ -29,10 +28,10 @@ function Portfolio() {
                 </StyledTableCell>
                 <StyledTableCell breakpoint={Variables.bp.l}>{item.asset.symbol}</StyledTableCell>
                 <StyledTableCell maxWidth={90} breakpoint={Variables.bp.m}>
-                  {currentPrice ? currentPrice.toFixed(2) : "..."}
+                  {currentPrice ? currentPrice.toFixed(2) : '...'}
                 </StyledTableCell>
                 <StyledTableCell maxWidth={75}>
-                  {currentPrice ? (currentPrice - item.total).toFixed(2) : "..."}
+                  {currentPrice ? (currentPrice - item.total).toFixed(2) : '...'}
                 </StyledTableCell>
                 <StyledTableCell>
                   <Button

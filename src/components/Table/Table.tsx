@@ -1,10 +1,12 @@
-import React, { PropsWithChildren, ReactElement, ReactHTMLElement } from "react";
-import { StyledTable } from "../../styles";
-import Variables from "../../styles/variables";
-import { StyledTableCell } from "./StyledTable";
-
+import React, { PropsWithChildren } from 'react';
+import { StyledTable } from '../../styles';
+import Variables from '../../styles/variables';
+import { StyledTableCell } from './StyledTable';
 
 function Table({ children }: PropsWithChildren) {
+  if (!children) {
+    return null;
+  }
   return (
     <StyledTable data-testid="table">
       <thead>
@@ -15,7 +17,7 @@ function Table({ children }: PropsWithChildren) {
           <StyledTableCell>%</StyledTableCell>
         </tr>
       </thead>
-      <tbody>{children ? children : ""}</tbody>
+      <tbody>{children || ''}</tbody>
     </StyledTable>
   );
 }
