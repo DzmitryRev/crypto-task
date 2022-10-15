@@ -5,19 +5,30 @@ import React from "react";
 
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import TableRow from "../components/TableRow/TableRow";
+import { StyledTableCell } from "../components/Table/StyledTable";
 
 export default {
   title: "TableRow",
   component: TableRow,
+  decorators: [
+    (Story) => (
+      <table>
+        <tbody>
+          <Story />
+          <Story />
+          <Story />
+        </tbody>
+      </table>
+    ),
+  ],
 } as ComponentMeta<typeof TableRow>;
 
-const Template: ComponentStory<typeof TableRow> = () => <TableRow></TableRow>;
+const Template: ComponentStory<typeof TableRow> = () => (
+  <TableRow>
+    <StyledTableCell maxWidth={150}>Cell #1</StyledTableCell>
+    <StyledTableCell maxWidth={150}>Cell #2</StyledTableCell>
+    <StyledTableCell maxWidth={150}>Cell #3</StyledTableCell>
+  </TableRow>
+);
 
 export const Default = Template.bind({});
-Default.args = {
-  children: <>
-  <td>Cell #1</td>
-  <td>Cell #2</td>
-  <td>Cell #3</td>
-  </>,
-};
