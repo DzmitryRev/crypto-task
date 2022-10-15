@@ -4,15 +4,24 @@
 import React from "react";
 
 import { ComponentStory, ComponentMeta, storiesOf } from "@storybook/react";
-import Button from "../components/Button/Button";
+import ButtonLink from "../components/Link/Link";
+import { MemoryRouter } from "react-router-dom";
 
 export default {
-  title: "Button",
-  component: Button,
-  argTypes: { action: { action: "click" } },
-} as ComponentMeta<typeof Button>;
+  title: "ButtonLink",
+  component: ButtonLink,
+  decorators: [
+    (Story) => (
+      <MemoryRouter>
+        <Story />
+      </MemoryRouter>
+    ),
+  ],
+} as ComponentMeta<typeof ButtonLink>;
 
-const Template: ComponentStory<typeof Button> = (args) => <Button {...args}>Hello world</Button>;
+const Template: ComponentStory<typeof ButtonLink> = (args) => (
+  <ButtonLink {...args}>Hello world</ButtonLink>
+);
 
 export const Blue = Template.bind({});
 Blue.args = {
