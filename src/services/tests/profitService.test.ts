@@ -46,7 +46,7 @@ describe("Calculation func tests", () => {
     mockStorageAsset.pop();
   });
 
-  test("calculateSum test", () => {
+  test("Should return sum of 'total' prop.", () => {
     // Must return sum of "total" prop
     expect(calculateSum(mockStorageAsset)).toBe(2000);
     const newMockAsset = JSON.parse(JSON.stringify(mockStorageAsset[0]));
@@ -54,7 +54,7 @@ describe("Calculation func tests", () => {
     expect(calculateSum(mockStorageAsset)).toBe(4000);
   });
 
-  test("calculateProfitSum test", () => {
+  test("Should return sum of 'priceUsd' * 'quantity' props.", () => {
     // Must return current price * quantity
     expect(calculateProfitSum(mockStorageAsset, mockAsset)).toBe(2200);
     const newMockAsset = JSON.parse(JSON.stringify(mockStorageAsset[0]));

@@ -2,9 +2,9 @@ import { render, screen } from "@testing-library/react";
 import "jest-styled-components";
 import Table from "../Table";
 
-test("Table component render test", () => {
+test("Should render Table component with children", () => {
   render(
-    <Table>
+    <Table data-testid="table">
       <tr>
         <td>1</td>
         <td>2</td>

@@ -3,7 +3,7 @@ import "jest-styled-components";
 import { BrowserRouter } from "react-router-dom";
 import Modal from "../Modal";
 
-test("Modal type prop test", () => {
+test("Should render default Modal component (width 560px)", () => {
   render(
     <BrowserRouter>
       <Modal type="default">Hi</Modal>
@@ -13,7 +13,7 @@ test("Modal type prop test", () => {
   expect(modal).toHaveStyleRule("width", "560px");
 });
 
-test("Modal type prop test #2", () => {
+test("Should render minify Modal component (width 320px)", () => {
   render(
     <BrowserRouter>
       <Modal type="minify">Hi</Modal>
@@ -23,7 +23,7 @@ test("Modal type prop test #2", () => {
   expect(modal).toHaveStyleRule("width", "320px");
 });
 
-test("Modal children prop test", () => {
+test("Should render Modal component with 'Hello' children", () => {
   render(
     <BrowserRouter>
       <Modal type="minify">Hello</Modal>

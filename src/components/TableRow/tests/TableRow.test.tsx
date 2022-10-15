@@ -3,7 +3,7 @@ import "jest-styled-components";
 import { StyledTableCell } from "../../Table/StyledTable";
 import TableRow from "../TableRow";
 
-test("TableRow component render test", () => {
+test("Should render TableRow component with children", () => {
   render(
     <table>
       <tbody>
@@ -22,7 +22,7 @@ test("TableRow component render test", () => {
   expect(tableRow).toHaveTextContent("3");
 });
 
-test("TableCell style test", () => {
+test("Should render TableCell component with maxWidth", () => {
   render(
     <table>
       <tbody>
