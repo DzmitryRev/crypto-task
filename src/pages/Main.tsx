@@ -33,7 +33,16 @@ function Main() {
       {loading && <Loading />}
       {assets && !loading && (
         <>
-          <Table>
+          <Table
+            head={(
+              <TableRow>
+                <StyledTableCell>Name</StyledTableCell>
+                <StyledTableCell breakpoint={Variables.bp.l}>Symbol</StyledTableCell>
+                <StyledTableCell breakpoint={Variables.bp.m}>$</StyledTableCell>
+                <StyledTableCell breakpoint={Variables.bp.s}>%</StyledTableCell>
+              </TableRow>
+            )}
+          >
             {assets.map((item) => (
               <TableRow key={item.id}>
                 <StyledTableCell maxWidth={180} clicable>

@@ -1,21 +1,18 @@
-import React, { PropsWithChildren } from 'react';
+import React, { PropsWithChildren, ReactNode } from 'react';
 import { StyledTable } from '../../styles';
-import Variables from '../../styles/variables';
-import { StyledTableCell } from './StyledTable';
 
-function Table({ children }: PropsWithChildren) {
+type TablePropsType = {
+  head: ReactNode;
+};
+
+function Table({ head, children }: PropsWithChildren<TablePropsType>) {
   if (!children) {
     return null;
   }
   return (
     <StyledTable data-testid="table">
       <thead>
-        <tr>
-          <StyledTableCell>Name</StyledTableCell>
-          <StyledTableCell breakpoint={Variables.bp.l}>Symbol</StyledTableCell>
-          <StyledTableCell breakpoint={Variables.bp.m}>$</StyledTableCell>
-          <StyledTableCell>%</StyledTableCell>
-        </tr>
+        {head}
       </thead>
       <tbody>{children || ''}</tbody>
     </StyledTable>
