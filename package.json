@@ -1,0 +1,26 @@
+{
+    "name": "crypt",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/DzmitryRev/crypto-task.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/DzmitryRev/crypto-task/issues"
+    },
+    "workspaces": [
+        "client/*", "server/*"
+    ],
+    "homepage": "https://github.com/DzmitryRev/crypto-task#readme",
+    "devDependencies": {
+        "concurrently": "^7.4.0",
+        "wsrun": "^5.2.4"
+    }
+}
