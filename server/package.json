@@ -2,7 +2,7 @@
     "name": "server",
     "version": "1.0.0",
     "description": "",
-    "main": "server.ts",
+    "main": "src/server.ts",
     "scripts": {
         "build": "npx tsc",
         "start": "node dist/server.js",
@@ -12,9 +12,11 @@
     "license": "ISC",
     "dependencies": {
         "@trpc/server": "^9.27.4",
+        "axios": "^1.1.3",
         "cors": "^2.8.5",
         "dotenv": "^16.0.3",
         "express": "^4.18.2",
+        "node-fetch": "^3.2.10",
         "zod": "^3.19.1"
     },
     "devDependencies": {
