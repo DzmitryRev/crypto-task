@@ -37,7 +37,7 @@ function Asset() {
             <ButtonLink color="red" path="/">
               back
             </ButtonLink>
-            {asset ? (
+            {asset && (
               <>
                 <h2>
                   {asset.name}
@@ -58,8 +58,6 @@ function Asset() {
                   add
                 </ButtonLink>
               </>
-            ) : (
-              ''
             )}
           </StyledAssetInfo>
           {history && <Chart history={history.data} />}

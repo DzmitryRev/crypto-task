@@ -2,9 +2,8 @@
 import styled from 'styled-components';
 
 export const StyledTable = styled.table`
-  margin: 0 auto;
+  margin: 0 auto 20px;
   max-width: 600px;
-  /* width: 100%; */
   font-weight: 500;
   font-size: 16px;
   line-height: 40px;

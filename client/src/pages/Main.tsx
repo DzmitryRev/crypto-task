@@ -66,21 +66,21 @@ function Main() {
 
           <StyledPagination>
             <Button
-              color="green"
+              color="blue"
               action={() => {
                 setPageOffset(pageOffset - 50);
               }}
               disabled={!pageOffset}
             >
-              {'<'}
+              {'  <  '}
             </Button>
             <Button
-              color="green"
+              color="blue"
               action={() => {
                 setPageOffset(pageOffset + 50);
               }}
             >
-              {'>'}
+              {'  >  '}
             </Button>
           </StyledPagination>
         </>
