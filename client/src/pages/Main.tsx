@@ -5,24 +5,16 @@ import Button from '../components/Button/Button';
 import ButtonLink from '../components/Link/Link';
 import Loading from '../components/Loading/Loading';
 import TableRow from '../components/TableRow/TableRow';
-import assetsApi from '../store/api/AssetsApi';
 import { StyledError, StyledPagination } from '../styles';
 import { StyledTableCell } from '../components/Table/StyledTable';
 import Variables from '../styles/variables';
+import trpc from '../services/trpc.service';
 
 function Main() {
   const [pageOffset, setPageOffset] = useState(0);
-  const {
-    data,
-    error,
-    isFetching: loading,
-  } = assetsApi.useFetchAllAssetsQuery(
-    { offset: pageOffset, limit: 50 },
-    {
-      refetchOnMountOrArgChange: true,
-    },
-  );
+  const { data, error, isLoading } = trpc.useQuery(['assets']);
   const assets = data?.data;
+
   return (
     <div>
       {error && (
@@ -30,8 +22,8 @@ function Main() {
           <h4>Something went wrong</h4>
         </StyledError>
       )}
-      {loading && <Loading />}
-      {assets && !loading && (
+      {isLoading && <Loading />}
+      {assets && !isLoading && (
         <>
           <Table
             head={(
@@ -72,7 +64,7 @@ function Main() {
               }}
               disabled={!pageOffset}
             >
-              {'  <  '}
+              {'<'}
             </Button>
             <Button
               color="blue"
@@ -80,7 +72,7 @@ function Main() {
                 setPageOffset(pageOffset + 50);
               }}
             >
-              {'  >  '}
+              {'>'}
             </Button>
           </StyledPagination>
         </>
