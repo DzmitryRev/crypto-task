@@ -3,22 +3,16 @@ import { Outlet, useParams } from 'react-router-dom';
 import Chart from '../components/Chart/Chart';
 import ButtonLink from '../components/Link/Link';
 import Loading from '../components/Loading/Loading';
-import assetsApi from '../store/api/AssetsApi';
+import trpc from '../services/trpc.service';
 import { StyledAssetInfo, StyledError } from '../styles';
 
 function Asset() {
   const { assetId } = useParams();
 
-  const {
-    data,
-    error,
-    isLoading: loading,
-  } = assetsApi.useFetchAssetQuery(assetId || '', {
-    pollingInterval: 5000,
-  });
+  const { data, error, isLoading } = trpc.useQuery(['asset', assetId as string]);
   const asset = data?.data;
 
-  const { data: history } = assetsApi.useFetchAssetHistoryQuery(assetId || '');
+  const { data: history } = trpc.useQuery(['history', assetId as string]);
 
   return (
     <div>
@@ -30,7 +24,7 @@ function Asset() {
           </ButtonLink>
         </StyledError>
       )}
-      {loading && <Loading />}
+      {isLoading && <Loading />}
       {asset && (
         <>
           <StyledAssetInfo>

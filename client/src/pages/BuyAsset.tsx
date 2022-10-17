@@ -5,8 +5,8 @@ import { useAppDispatch } from '../store/store';
 import Button from '../components/Button/Button';
 import Loading from '../components/Loading/Loading';
 import { setPortfolio } from '../store/slices/portfolioSlice';
-import assetsApi from '../store/api/AssetsApi';
 import { StyledBuyAsset, StyledError } from '../styles';
+import trpc from '../services/trpc.service';
 
 function BuyAsset() {
   const { assetId } = useParams();
@@ -14,7 +14,7 @@ function BuyAsset() {
 
   const dispatch = useAppDispatch();
 
-  const { data, error, isLoading: loading } = assetsApi.useFetchAssetQuery(assetId || '');
+  const { data, error, isLoading } = trpc.useQuery(['asset', assetId as string]);
   const asset = data?.data;
 
   const [quantity, setQuantity] = useState<string>('');
@@ -31,7 +31,7 @@ function BuyAsset() {
           <h4>Something went wrong</h4>
         </StyledError>
       )}
-      {loading && <Loading />}
+      {isLoading && <Loading />}
       {asset && (
         <StyledBuyAsset>
           <h2 className="buy-asset-name">

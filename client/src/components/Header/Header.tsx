@@ -1,18 +1,14 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import usePortfolio from '../../hooks/usePortfolio';
-import assetsApi from '../../store/api/AssetsApi';
 import StyledHeader from './StyledHeader';
 import ButtonLink from '../Link/Link';
+import trpc from '../../services/trpc.service';
 
 export default function Header() {
   const { sum, profit } = usePortfolio();
-  const { data } = assetsApi.useFetchAllAssetsQuery(
-    { offset: 0, limit: 3 },
-    {
-      pollingInterval: 5000,
-    },
-  );
+
+  const { data } = trpc.useQuery(['assets', { offset: 0, limit: 3 }]);
   const topAssets = data?.data;
 
   const location = useLocation();
