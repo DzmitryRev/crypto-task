@@ -1,4 +1,4 @@
-import { AssetType } from "../../store/assets.model";
+import { AssetType } from "server/src/models/models";
 import { StorageAssetType } from "../localStorage.service";
 import { calculateProfitSum, calculateSum } from "../profit.service";
 

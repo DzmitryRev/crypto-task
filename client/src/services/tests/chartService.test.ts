@@ -1,4 +1,4 @@
-import { HistoryType } from "../../store/assets.model";
+import { HistoryType } from "server/src/models/models";
 import { ChartDataType, createChartData } from "../chart.service";
 
 const mockHistory: HistoryType[] = [

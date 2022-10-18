@@ -11,7 +11,7 @@ import {
   Legend,
 } from 'chart.js';
 import zoomPlugin from 'chartjs-plugin-zoom';
-import { HistoryType } from '../store/assets.model';
+import { HistoryType } from 'server/src/models/models';
 
 ChartJS.register(
   CategoryScale,

@@ -1,5 +1,5 @@
 import { Line } from 'react-chartjs-2';
-import { HistoryType } from '../../store/assets.model';
+import { HistoryType } from 'server/src/models/models';
 import StyledChart from './StyledChart';
 import { chartOptions, createChartData } from '../../services/chart.service';
 

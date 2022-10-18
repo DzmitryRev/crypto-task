@@ -1,8 +1,8 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { AssetResponseType, AssetType } from 'server/src/models/models';
 import PortfolioStorage, { StorageAssetType } from '../../services/localStorage.service';
 import { calculateProfitSum, calculateSum } from '../../services/profit.service';
-import { AssetResponseType, AssetType } from '../assets.model';
 
 interface IPortfolioSliceState {
   assets: AssetType[];

@@ -1,5 +1,5 @@
+import { AssetType } from 'server/src/models/models';
 import uniqid from 'uniqid';
-import { AssetType } from '../store/assets.model';
 
 export type StorageAssetType = {
   asset: AssetType;
