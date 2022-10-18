@@ -1,14 +1,14 @@
 import { useState } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import Table from '../components/Table/Table';
-import Button from '../components/Button/Button';
 import ButtonLink from '../components/Link/Link';
 import Loading from '../components/Loading/Loading';
 import TableRow from '../components/TableRow/TableRow';
-import { StyledError, StyledPagination } from '../styles';
+import { StyledError } from '../styles';
 import { StyledTableCell } from '../components/Table/StyledTable';
 import Variables from '../styles/variables';
 import trpc from '../services/trpc.service';
+import Pagination from '../components/Pagination/Pagination';
 
 function Main() {
   const [pageOffset, setPageOffset] = useState(0);
@@ -60,25 +60,7 @@ function Main() {
               </>
             )}
           />
-          <StyledPagination>
-            <Button
-              color="blue"
-              action={() => {
-                setPageOffset(pageOffset - 50);
-              }}
-              disabled={!pageOffset}
-            >
-              {'<'}
-            </Button>
-            <Button
-              color="blue"
-              action={() => {
-                setPageOffset(pageOffset + 50);
-              }}
-            >
-              {'>'}
-            </Button>
-          </StyledPagination>
+          <Pagination currentOffset={pageOffset} setPage={setPageOffset} />
         </>
       )}
       <Outlet />

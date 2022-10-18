@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import "jest-styled-components";
 import { BrowserRouter } from "react-router-dom";
 import Modal from "../Modal";

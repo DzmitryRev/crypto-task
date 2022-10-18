@@ -68,50 +68,42 @@ export const StyledError = styled.div`
 
 // main page styles
 
-export const StyledPagination = styled.div`
-  max-width: 560px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  padding: 0 20px;
-`;
+// export const StyledTable = styled.table`
+//   margin: 0 auto;
+//   max-width: 100%;
+//   font-weight: 500;
+//   font-size: 16px;
+//   line-height: 40px;
 
-export const StyledTable = styled.table`
-  margin: 0 auto;
-  max-width: 100%;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 40px;
+//   thead {
+//     font-weight: 700;
+//   }
+//   td {
+//     overflow: hidden;
+//     text-overflow: ellipsis;
+//     padding: 0 15px;
+//     white-space: nowrap;
+//     a {
+//       display: block;
+//       width: 100%;
+//       height: 100%;
+//     }
+//   }
 
-  thead {
-    font-weight: 700;
-  }
-  td {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    padding: 0 15px;
-    white-space: nowrap;
-    a {
-      display: block;
-      width: 100%;
-      height: 100%;
-    }
-  }
+//   .symbol-td-head {
+//     @media screen and (max-width: 600px) {
+//       display: none;
+//     }
+//   }
+//   .profit-td-head {
+//     @media screen and (max-width: 498px) {
+//       display: none;
+//     }
+//   }
 
-  .symbol-td-head {
-    @media screen and (max-width: 600px) {
-      display: none;
-    }
-  }
-  .profit-td-head {
-    @media screen and (max-width: 498px) {
-      display: none;
-    }
-  }
-
-  .price-td-head {
-    @media screen and (max-width: 398px) {
-      display: none;
-    }
-  }
-`;
+//   .price-td-head {
+//     @media screen and (max-width: 398px) {
+//       display: none;
+//     }
+//   }
+// `;
