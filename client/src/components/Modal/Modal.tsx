@@ -1,4 +1,4 @@
-import React, { PropsWithChildren } from 'react';
+import { PropsWithChildren } from 'react';
 import ClearIcon from '@mui/icons-material/Clear';
 import { StyledModal, StyledModalShadow } from './StyledModal';
 import useModal from '../../hooks/useModal';

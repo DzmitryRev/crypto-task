@@ -12,9 +12,8 @@ test("Should render Table component with head row", () => {
           <td>head 3</td>
         </tr>
       }
-    >
-      <tr></tr>
-    </Table>
+      body={<tr></tr>}
+    />
   );
   const table = screen.getByTestId("table");
   expect(table).toBeInTheDocument();
@@ -25,17 +24,20 @@ test("Should render Table component with head row", () => {
 
 test("Should render Table component with children", () => {
   render(
-    <Table head={<tr></tr>}>
-      <tr>
-        <td>1</td>
-        <td>2</td>
-        <td>3</td>
-      </tr>
-    </Table>
+    <Table
+      head={<tr></tr>}
+      body={
+        <tr>
+          <td>body 1</td>
+          <td>body 2</td>
+          <td>body 3</td>
+        </tr>
+      }
+    />
   );
   const table = screen.getByTestId("table");
   expect(table).toBeInTheDocument();
-  expect(table).toHaveTextContent("1");
-  expect(table).toHaveTextContent("2");
-  expect(table).toHaveTextContent("3");
+  expect(table).toHaveTextContent("body 1");
+  expect(table).toHaveTextContent("body 2");
+  expect(table).toHaveTextContent("body 3");
 });

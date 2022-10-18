@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import Table from '../components/Table/Table';
 import Button from '../components/Button/Button';
@@ -28,34 +28,38 @@ function Main() {
           <Table
             head={(
               <TableRow>
-                <StyledTableCell>Name</StyledTableCell>
-                <StyledTableCell breakpoint={Variables.bp.l}>Symbol</StyledTableCell>
-                <StyledTableCell breakpoint={Variables.bp.m}>$</StyledTableCell>
-                <StyledTableCell breakpoint={Variables.bp.s}>%</StyledTableCell>
+                <StyledTableCell as="th">Name</StyledTableCell>
+                <StyledTableCell as="th" breakpoint={Variables.bp.l}>
+                  Symbol
+                </StyledTableCell>
+                <StyledTableCell as="th" breakpoint={Variables.bp.m}>
+                  $
+                </StyledTableCell>
+                <StyledTableCell as="th">%</StyledTableCell>
               </TableRow>
             )}
-          >
-            {assets.map((item) => (
-              <TableRow key={item.id}>
-                <StyledTableCell maxWidth={180} clicable>
-                  <Link to={`/asset/${item.id}`}>{item.name}</Link>
-                </StyledTableCell>
-                <StyledTableCell breakpoint={Variables.bp.l}>{item.symbol}</StyledTableCell>
-                <StyledTableCell breakpoint={Variables.bp.m}>
-                  {(+item.priceUsd).toFixed(2)}
-                </StyledTableCell>
-                <StyledTableCell breakpoint={Variables.bp.s}>
-                  {(+item.changePercent24Hr).toFixed(2)}
-                </StyledTableCell>
-                <StyledTableCell>
-                  <ButtonLink color="green" path={`buy/${item.id}`}>
-                    add
-                  </ButtonLink>
-                </StyledTableCell>
-              </TableRow>
-            ))}
-          </Table>
-
+            body={(
+              <>
+                {assets.map((item) => (
+                  <TableRow key={item.id}>
+                    <StyledTableCell maxWidth={140} clicable>
+                      <Link to={`/asset/${item.id}`}>{item.name}</Link>
+                    </StyledTableCell>
+                    <StyledTableCell breakpoint={Variables.bp.l}>{item.symbol}</StyledTableCell>
+                    <StyledTableCell breakpoint={Variables.bp.m}>
+                      {(+item.priceUsd).toFixed(2)}
+                    </StyledTableCell>
+                    <StyledTableCell>{(+item.changePercent24Hr).toFixed(2)}</StyledTableCell>
+                    <StyledTableCell>
+                      <ButtonLink color="green" path={`buy/${item.id}`}>
+                        add
+                      </ButtonLink>
+                    </StyledTableCell>
+                  </TableRow>
+                ))}
+              </>
+            )}
+          />
           <StyledPagination>
             <Button
               color="blue"

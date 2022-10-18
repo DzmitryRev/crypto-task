@@ -1,4 +1,4 @@
-import React, { PropsWithChildren } from 'react';
+import { PropsWithChildren } from 'react';
 import StyledButton from './StyledButton';
 
 type ButtonPropsType = {

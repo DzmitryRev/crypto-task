@@ -1,4 +1,3 @@
-import React from 'react';
 import { StyledLoading, StyledLoadingContainer } from './StyledLoading';
 
 function Loading() {

@@ -27,6 +27,7 @@ type StyledTableCellProps = {
 
 export const StyledTableCell = styled.td<StyledTableCellProps>`
   overflow: hidden;
+  text-align: left;
   text-overflow: ellipsis;
   white-space: nowrap;
   padding: 0 15px;

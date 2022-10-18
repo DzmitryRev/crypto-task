@@ -1,4 +1,3 @@
-import React from 'react';
 import { Outlet, useParams } from 'react-router-dom';
 import Chart from '../components/Chart/Chart';
 import ButtonLink from '../components/Link/Link';

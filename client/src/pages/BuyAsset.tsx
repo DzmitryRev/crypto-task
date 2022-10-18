@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import PortfolioStorage from '../services/localStorage.service';
 import { useAppDispatch } from '../store/store';
