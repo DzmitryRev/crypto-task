@@ -1,4 +1,3 @@
-/* eslint-disable linebreak-style */
 import Button from '../Button/Button';
 import { StyledPagination } from './StyledPagination';
 

@@ -1,47 +1,47 @@
-import { AssetType } from "server/src/models/models";
-import { StorageAssetType } from "../localStorage.service";
-import { calculateProfitSum, calculateSum } from "../profit.service";
+import { AssetType } from 'server/src/models/models';
+import { StorageAssetType } from '../localStorage.service';
+import { calculateProfitSum, calculateSum } from '../profit.service';
 
 const mockAsset: AssetType[] = [
   {
-    changePercent24Hr: "...",
-    explorer: "...",
-    id: "bitcoin",
-    marketCapUsd: "...",
-    maxSupply: "...",
-    name: "Bitcoin",
-    priceUsd: "1100",
-    rank: "...",
-    supply: "...",
-    symbol: "...",
-    volumeUsd24Hr: "...",
-    vwap24Hr: "...",
+    changePercent24Hr: '...',
+    explorer: '...',
+    id: 'bitcoin',
+    marketCapUsd: '...',
+    maxSupply: '...',
+    name: 'Bitcoin',
+    priceUsd: '1100',
+    rank: '...',
+    supply: '...',
+    symbol: '...',
+    volumeUsd24Hr: '...',
+    vwap24Hr: '...',
   },
 ];
 
 const mockStorageAsset: StorageAssetType[] = [
   {
     asset: {
-      changePercent24Hr: "...",
-      explorer: "...",
-      id: "bitcoin",
-      marketCapUsd: "...",
-      maxSupply: "...",
-      name: "Bitcoin",
-      priceUsd: "1000",
-      rank: "...",
-      supply: "...",
-      symbol: "...",
-      volumeUsd24Hr: "...",
-      vwap24Hr: "...",
+      changePercent24Hr: '...',
+      explorer: '...',
+      id: 'bitcoin',
+      marketCapUsd: '...',
+      maxSupply: '...',
+      name: 'Bitcoin',
+      priceUsd: '1000',
+      rank: '...',
+      supply: '...',
+      symbol: '...',
+      volumeUsd24Hr: '...',
+      vwap24Hr: '...',
     },
-    id: "l91rzn14",
+    id: 'l91rzn14',
     quantity: 2,
     total: 2000,
   },
 ];
 
-describe("Calculation func tests", () => {
+describe('Calculation func tests', () => {
   afterEach(() => {
     mockStorageAsset.pop();
   });
@@ -60,6 +60,5 @@ describe("Calculation func tests", () => {
     const newMockAsset = JSON.parse(JSON.stringify(mockStorageAsset[0]));
     mockStorageAsset.push(newMockAsset);
     expect(calculateProfitSum(mockStorageAsset, mockAsset)).toBe(4400);
-
   });
 });

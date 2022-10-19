@@ -16,5 +16,10 @@
   "bugs": {
     "url": "https://github.com/DzmitryRev/crypto-task/issues"
   },
-  "homepage": "https://github.com/DzmitryRev/crypto-task#readme"
+  "homepage": "https://github.com/DzmitryRev/crypto-task#readme",
+  "workspaces": [
+    "client",
+    "server",
+    "ter"
+  ]
 }

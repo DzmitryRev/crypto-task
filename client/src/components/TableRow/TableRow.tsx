@@ -1,4 +1,3 @@
-/* eslint-disable linebreak-style */
 import { PropsWithChildren } from 'react';
 
 export default function TableRow({ children }: PropsWithChildren) {

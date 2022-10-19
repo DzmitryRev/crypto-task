@@ -1,5 +1,3 @@
-/* eslint-disable linebreak-style */
-
 type VariablesType = {
   colors: {
     blue: string;

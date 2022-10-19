@@ -1,18 +1,15 @@
-/* eslint-disable linebreak-style */
-/* eslint-disable react/function-component-definition */
-/* eslint-disable react/jsx-props-no-spreading */
-import React from "react";
-
-import { ComponentStory, ComponentMeta } from "@storybook/react";
-import Modal from "../components/Modal/Modal";
-import { MemoryRouter, Outlet, Route, Routes } from "react-router-dom";
-import ButtonLink from "../components/Link/Link";
+import { ComponentStory, ComponentMeta } from '@storybook/react';
+import {
+  MemoryRouter, Route, Routes,
+} from 'react-router-dom';
+import Modal from '../components/Modal/Modal';
+import ButtonLink from '../components/Link/Link';
 
 export default {
-  title: "Modal",
+  title: 'Modal',
   component: Modal,
   args: {
-    children: ""
+    children: '',
   },
   decorators: [
     (Story) => (
@@ -28,14 +25,14 @@ export default {
   ],
 } as ComponentMeta<typeof Modal>;
 
-const Template: ComponentStory<typeof Modal> = (args) => <Modal {...args}></Modal>;
+const Template: ComponentStory<typeof Modal> = (args) => <Modal {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  type: "default",
+  type: 'default',
 };
 
 export const Minify = Template.bind({});
 Minify.args = {
-  type: "minify",
+  type: 'minify',
 };

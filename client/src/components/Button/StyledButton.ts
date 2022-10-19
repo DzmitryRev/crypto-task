@@ -1,4 +1,3 @@
-/* eslint-disable no-nested-ternary */
 import styled from 'styled-components';
 import Variables from '../../styles/variables';
 

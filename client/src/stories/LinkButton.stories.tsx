@@ -1,14 +1,9 @@
-/* eslint-disable linebreak-style */
-/* eslint-disable react/function-component-definition */
-/* eslint-disable react/jsx-props-no-spreading */
-import React from "react";
-
-import { ComponentStory, ComponentMeta, storiesOf } from "@storybook/react";
-import ButtonLink from "../components/Link/Link";
-import { MemoryRouter } from "react-router-dom";
+import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { MemoryRouter } from 'react-router-dom';
+import ButtonLink from '../components/Link/Link';
 
 export default {
-  title: "ButtonLink",
+  title: 'ButtonLink',
   component: ButtonLink,
   decorators: [
     (Story) => (
@@ -25,15 +20,15 @@ const Template: ComponentStory<typeof ButtonLink> = (args) => (
 
 export const Blue = Template.bind({});
 Blue.args = {
-  color: "blue",
+  color: 'blue',
 };
 
 export const Red = Template.bind({});
 Red.args = {
-  color: "red",
+  color: 'red',
 };
 
 export const Green = Template.bind({});
 Green.args = {
-  color: "green",
+  color: 'green',
 };

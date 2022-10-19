@@ -11,9 +11,9 @@
     },
     "ecmaVersion": "latest",
     "sourceType": "module",
-    "project": "./client/tsconfig.json"
+    "project": "./tsconfig.json"
   },
-  "plugins": ["react", "@typescript-eslint"],
+  "plugins": ["react", "@typescript-eslint", "jsx-a11y"],
   "rules": {
     "no-param-reassign": [
       "error",
@@ -22,7 +22,24 @@
         "ignorePropertyModificationsFor": ["state"]
       }
     ],
-    "react/react-in-jsx-scope": "off"
+    "react/react-in-jsx-scope": "off",
+    "no-nested-ternary": "off",
+    "import/prefer-default-export": "off"
   },
-  "ignorePatterns": ["*.test.tsx", "*.test.ts", "src/stories/*.tsx"]
+  "overrides": [
+    {
+      "files": ["*.test.tsx"],
+      "plugins": ["jest"],
+      "extends": ["plugin:jest/recommended"],
+      "rules": { "jest/prefer-expect-assertions": "off" }
+    },
+    {
+      "extends": ["plugin:storybook/recommended"],
+      "files": ["*.stories.@(ts|tsx|js|jsx|mjs|cjs)"],
+      "rules": {
+        "react/function-component-definition": "off",
+        "react/jsx-props-no-spreading": "off"
+      }
+    }
+  ]
 }

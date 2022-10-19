@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-no-useless-fragment */
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import { Link } from 'react-router-dom';
 import Button from '../components/Button/Button';
@@ -13,7 +12,7 @@ function Portfolio() {
   const { portfolio, assets, loadPortfolio } = usePortfolio();
 
   return (
-    <>
+    <div>
       {portfolio.length ? (
         <Table
           head={(
@@ -64,7 +63,7 @@ function Portfolio() {
       ) : (
         <p>You have not assets</p>
       )}
-    </>
+    </div>
   );
 }
 

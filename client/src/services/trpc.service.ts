@@ -1,4 +1,3 @@
-/* eslint-disable linebreak-style */
 import { createReactQueryHooks } from '@trpc/react';
 import { AppRouter } from 'server/src/trpc/router';
 
