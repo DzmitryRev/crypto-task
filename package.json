@@ -1,25 +1,24 @@
 {
-  "name": "crypt",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/DzmitryRev/crypto-task.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/DzmitryRev/crypto-task/issues"
-  },
-  "homepage": "https://github.com/DzmitryRev/crypto-task#readme",
-  "workspaces": [
-    "client",
-    "server",
-    "ter"
-  ]
+    "name": "crypt",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/DzmitryRev/crypto-task.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/DzmitryRev/crypto-task/issues"
+    },
+    "homepage": "https://github.com/DzmitryRev/crypto-task#readme",
+    "workspaces": [
+        "client",
+        "server"
+    ]
 }
