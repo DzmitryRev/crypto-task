@@ -2,6 +2,35 @@
     "name": "crypt",
     "version": "0.1.0",
     "private": true,
+    "scripts": {
+        "start": "react-scripts start",
+        "build": "react-scripts build",
+        "test": "react-scripts test",
+        "test:cypress": "cypress open",
+        "eject": "react-scripts eject",
+        "lint": "eslint .",
+        "lint:fix": "eslint --fix .",
+        "storybook": "start-storybook -p 6006 -s public",
+        "build-storybook": "build-storybook -s public"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/DzmitryRev/crypto-task.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    },
     "dependencies": {
         "@emotion/react": "^11.10.4",
         "@emotion/styled": "^11.10.4",
@@ -38,34 +67,6 @@
         "uniqid": "^5.4.0",
         "web-vitals": "^2.1.4"
     },
-    "scripts": {
-        "start": "react-scripts start",
-        "build": "react-scripts build",
-        "test": "react-scripts test",
-        "eject": "react-scripts eject",
-        "lint": "eslint .",
-        "lint:fix": "eslint --fix .",
-        "storybook": "start-storybook -p 6006 -s public",
-        "build-storybook": "build-storybook -s public"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/DzmitryRev/crypto-task.git"
-    },
-    "author": "",
-    "license": "ISC",
-    "browserslist": {
-        "production": [
-            ">0.2%",
-            "not dead",
-            "not op_mini all"
-        ],
-        "development": [
-            "last 1 chrome version",
-            "last 1 firefox version",
-            "last 1 safari version"
-        ]
-    },
     "devDependencies": {
         "@storybook/addon-actions": "^6.5.12",
         "@storybook/addon-essentials": "^6.5.12",
@@ -80,6 +81,7 @@
         "@typescript-eslint/eslint-plugin": "^5.38.1",
         "@typescript-eslint/parser": "^5.38.1",
         "babel-plugin-named-exports-order": "^0.0.2",
+        "cypress": "^10.10.0",
         "eslint-config-airbnb": "^19.0.4",
         "eslint-config-airbnb-typescript": "^17.0.0",
         "eslint-plugin-import": "^2.26.0",
