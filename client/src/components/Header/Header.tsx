@@ -50,6 +50,7 @@ export default function Header() {
       </div>
       <div>
         <ButtonLink
+          data-cy-id="portfolio-link"
           color="blue"
           path={`${location.pathname}${location.pathname === '/' ? '' : '/'}portfolio`}
         >

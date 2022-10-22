@@ -6,7 +6,8 @@
         "start": "react-scripts start",
         "build": "react-scripts build",
         "test": "react-scripts test",
-        "test:cypress": "cypress open",
+        "test:cypress": "start-server-and-test start http://localhost:3000 cypress",
+        "cypress": "cypress open",
         "eject": "react-scripts eject",
         "lint": "eslint .",
         "lint:fix": "eslint --fix .",
@@ -68,6 +69,7 @@
         "web-vitals": "^2.1.4"
     },
     "devDependencies": {
+        "@cypress/snapshot": "^2.1.7",
         "@storybook/addon-actions": "^6.5.12",
         "@storybook/addon-essentials": "^6.5.12",
         "@storybook/addon-interactions": "^6.5.12",
@@ -84,12 +86,14 @@
         "cypress": "^10.10.0",
         "eslint-config-airbnb": "^19.0.4",
         "eslint-config-airbnb-typescript": "^17.0.0",
+        "eslint-plugin-cypress": "^2.12.1",
         "eslint-plugin-import": "^2.26.0",
         "eslint-plugin-jsx-a11y": "^6.6.1",
         "eslint-plugin-react": "^7.31.8",
         "eslint-plugin-react-hooks": "^4.6.0",
         "jest-styled-components": "^7.1.1",
         "prop-types": "^15.8.1",
+        "start-server-and-test": "^1.14.0",
         "webpack": "^5.74.0"
     }
 }
