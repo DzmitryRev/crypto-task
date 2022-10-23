@@ -14,7 +14,6 @@ function Main() {
   const [pageOffset, setPageOffset] = useState(0);
   const { data, error, isLoading } = trpc.useQuery(['assets', { offset: pageOffset, limit: 50 }]);
   const assets = data?.data;
-
   return (
     <div>
       {error && (
