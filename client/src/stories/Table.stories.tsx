@@ -11,16 +11,7 @@ export default {
   component: Table,
 } as ComponentMeta<typeof Table>;
 
-const Template: ComponentStory<typeof Table> = (args) => (
-  <Table {...args}>
-    <TableRow>
-      <StyledTableCell>Cell 1</StyledTableCell>
-      <StyledTableCell breakpoint={Variables.bp.l}>Cell 2</StyledTableCell>
-      <StyledTableCell breakpoint={Variables.bp.m}>Cell 3</StyledTableCell>
-      <StyledTableCell breakpoint={Variables.bp.s}>Cell 4</StyledTableCell>
-    </TableRow>
-  </Table>
-);
+const Template: ComponentStory<typeof Table> = (args) => <Table {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
@@ -31,5 +22,28 @@ Default.args = {
       <StyledTableCell breakpoint={Variables.bp.m}>Head cell 3</StyledTableCell>
       <StyledTableCell breakpoint={Variables.bp.s}>Head cell 4</StyledTableCell>
     </TableRow>
+  ),
+  body: (
+    <>
+      <TableRow>
+        <StyledTableCell>Cell 1</StyledTableCell>
+        <StyledTableCell breakpoint={Variables.bp.l}>Body cell 2</StyledTableCell>
+        <StyledTableCell breakpoint={Variables.bp.m}>Body cell 3</StyledTableCell>
+        <StyledTableCell breakpoint={Variables.bp.s}>Body cell 4</StyledTableCell>
+      </TableRow>
+      <TableRow>
+        <StyledTableCell>Cell 1</StyledTableCell>
+        <StyledTableCell breakpoint={Variables.bp.l}>Body cell 2</StyledTableCell>
+        <StyledTableCell breakpoint={Variables.bp.m}>Body cell 3</StyledTableCell>
+        <StyledTableCell breakpoint={Variables.bp.s}>Body cell 4</StyledTableCell>
+      </TableRow>
+      <TableRow>
+        <StyledTableCell>Cell 1</StyledTableCell>
+        <StyledTableCell breakpoint={Variables.bp.l}>Body cell 2</StyledTableCell>
+        <StyledTableCell breakpoint={Variables.bp.m}>Body cell 3</StyledTableCell>
+        <StyledTableCell breakpoint={Variables.bp.s}>Body cell 4</StyledTableCell>
+      </TableRow>
+
+    </>
   ),
 };
