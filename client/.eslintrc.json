@@ -11,7 +11,7 @@
     },
     "ecmaVersion": "latest",
     "sourceType": "module",
-    "project": "./tsconfig.json"
+    "project": "tsconfig.json"
   },
   "plugins": ["react", "@typescript-eslint", "jsx-a11y"],
   "rules": {
@@ -31,7 +31,9 @@
       "files": ["*.test.tsx"],
       "plugins": ["jest"],
       "extends": ["plugin:jest/recommended"],
-      "rules": { "jest/prefer-expect-assertions": "off" }
+      "rules": {
+        "jest/prefer-expect-assertions": "off"
+      }
     },
     {
       "extends": ["plugin:storybook/recommended"],

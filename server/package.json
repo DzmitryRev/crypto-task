@@ -4,8 +4,8 @@
     "description": "",
     "main": "src/server.ts",
     "scripts": {
-        "build": "npx tsc",
-        "start": "node dist/server.js",
+        "start": "netlify-lambda serve src",
+        "build": "netlify-lambda build src",
         "dev": "concurrently \"npx tsc --watch\" \"nodemon -q dist/server.js\""
     },
     "repository": {
@@ -20,7 +20,9 @@
         "cors": "^2.8.5",
         "dotenv": "^16.0.3",
         "express": "^4.18.2",
+        "netlify-lambda": "^2.0.15",
         "node-fetch": "^3.2.10",
+        "serverless-http": "^3.1.0",
         "typescript": "^4.8.4",
         "zod": "^3.19.1"
     },

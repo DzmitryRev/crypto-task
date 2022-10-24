@@ -3,6 +3,7 @@ import * as trpcExpress from "@trpc/server/adapters/express";
 import cors from "cors";
 import { appRouter } from "./trpc/router";
 import { createContext } from "./trpc/context";
+import serverless from "serverless-http";
 
 const app: Express = express();
 
@@ -16,8 +17,13 @@ app.use(
   })
 );
 
-const PORT = 4000;
+app.use("/.netlify/functions/api", app);
 
-app.listen(PORT, () => {
-  console.log(`Server is running. PORT=${PORT}`);
-});
+// const PORT = 4000;
+
+// app.listen(PORT, () => {
+//   console.log(`Server is running. PORT=${PORT}`);
+// });
+
+
+export default serverless(app);
