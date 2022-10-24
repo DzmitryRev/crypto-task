@@ -1,0 +1,53 @@
+{
+  "id": null,
+  "result": {
+    "type": "data",
+    "data": {
+      "data": [
+        {
+          "id": "bitcoin",
+          "rank": "1",
+          "symbol": "BTC",
+          "name": "Bitcoin",
+          "supply": "19188250.0000000000000000",
+          "maxSupply": "21000000.0000000000000000",
+          "marketCapUsd": "369771421472.0286357243967500",
+          "volumeUsd24Hr": "11565955306.5057554300578781",
+          "priceUsd": "19270.7214817416197790",
+          "changePercent24Hr": "0.3544694863403631",
+          "vwap24Hr": "19393.2284902454550002",
+          "explorer": "https://blockchain.info/"
+        },
+        {
+          "id": "ethereum",
+          "rank": "2",
+          "symbol": "ETH",
+          "name": "Ethereum",
+          "supply": "122373863.4990000000000000",
+          "maxSupply": null,
+          "marketCapUsd": "163441874037.5293800194871475",
+          "volumeUsd24Hr": "4769475624.7271466200302481",
+          "priceUsd": "1335.5946226120823148",
+          "changePercent24Hr": "1.6317449191238446",
+          "vwap24Hr": "1344.2287452845592679",
+          "explorer": "https://etherscan.io/"
+        },
+        {
+          "id": "tether",
+          "rank": "3",
+          "symbol": "USDT",
+          "name": "Tether",
+          "supply": "68453108028.5633700000000000",
+          "maxSupply": null,
+          "marketCapUsd": "68483215664.7713699697510038",
+          "volumeUsd24Hr": "16293407494.0014941676669271",
+          "priceUsd": "1.0004398286224701",
+          "changePercent24Hr": "-0.0021327019601496",
+          "vwap24Hr": "1.0004423342189092",
+          "explorer": "https://www.omniexplorer.info/asset/31"
+        }
+      ],
+      "timestamp": 1666631603506
+    }
+  }
+}
