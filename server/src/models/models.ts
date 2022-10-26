@@ -24,13 +24,12 @@ export type AssetResponseType = {
 };
 
 export type HistoryType = {
-    date: string;
-    priceUsd: string;
-    time: number;
-  };
-  
-  export type HistoryResponceType = {
-    data: HistoryType[];
-    timestamp: number;
-  };
-  
+  date: string;
+  priceUsd: string;
+  time: number;
+};
+
+export type HistoryResponceType = {
+  data: HistoryType[];
+  timestamp: number;
+};

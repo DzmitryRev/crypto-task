@@ -1,18 +1,18 @@
-import { Context } from "./context";
-import * as trpc from "@trpc/server";
-import { AssetResponseType, AssetsResponseType, HistoryResponceType } from "../models/models";
-import axios from "axios";
-import { z } from "zod";
+import * as trpc from '@trpc/server';
+import axios from 'axios';
+import { z } from 'zod';
+import { AssetResponseType, AssetsResponseType, HistoryResponceType } from '../models/models';
+import { Context } from './context';
 
 function createRouter() {
   return trpc.router<Context>();
 }
 
 export const appRouter = createRouter()
-  .query("assets", {
+  .query('assets', {
     input: z.object({ offset: z.number(), limit: z.number() }),
     async resolve(req) {
-      const res = await axios.get<AssetsResponseType>(`https://api.coincap.io/v2/assets`, {
+      const res = await axios.get<AssetsResponseType>('https://api.coincap.io/v2/assets', {
         params: {
           offset: req.input.offset,
           limit: req.input.limit,
@@ -21,16 +21,16 @@ export const appRouter = createRouter()
       return res.data;
     },
   })
-  .query("asset", {
+  .query('asset', {
     input: z.string(),
     async resolve(req) {
       const res = await axios.get<AssetResponseType>(
-        `https://api.coincap.io/v2/assets/${req.input}`
+        `https://api.coincap.io/v2/assets/${req.input}`,
       );
       return res.data;
     },
   })
-  .query("history", {
+  .query('history', {
     input: z.string(),
     async resolve(req) {
       const date = new Date();
@@ -38,11 +38,11 @@ export const appRouter = createRouter()
         `https://api.coincap.io/v2/assets/${req.input}/history`,
         {
           params: {
-            interval: "d1",
+            interval: 'd1',
             start: date.setMonth(date.getMonth() - 1),
             end: new Date().getTime(),
           },
-        }
+        },
       );
       return res.data;
     },
