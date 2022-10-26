@@ -21,7 +21,8 @@
         "client",
         "server"
     ],
+    "dependencies": {},
     "engines": {
-        "node": "16.x"
+        "node": "18.x"
     }
 }
