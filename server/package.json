@@ -1,7 +1,6 @@
 {
-    "name": "server",
+    "name": "crypto-server",
     "version": "1.0.0",
-    "description": "",
     "main": "src/server.ts",
     "scripts": {
         "build": "npx tsc",
@@ -12,7 +11,10 @@
         "type": "git",
         "url": "git+https://github.com/DzmitryRev/crypto-task.git"
     },
-    "author": "",
+    "author": {
+        "name": "Dmitry Revchenko",
+        "email": "reuchankadzmitry@gmail.com"
+    },
     "license": "ISC",
     "dependencies": {
         "@trpc/server": "^9.27.4",
