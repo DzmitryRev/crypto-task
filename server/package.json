@@ -39,5 +39,8 @@
         "@typescript-eslint/parser": "^5.38.1",
         "eslint-config-airbnb": "^19.0.4",
         "eslint-config-airbnb-typescript": "^17.0.0"
+    },
+    "engines": {
+        "node": "18.x"
     }
 }
