@@ -41,6 +41,6 @@
         "eslint-config-airbnb-typescript": "^17.0.0"
     },
     "engines": {
-        "node": "18.x"
+        "node": "16.x"
     }
 }
