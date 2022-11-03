@@ -1,65 +1,66 @@
-// import { Modal } from 'crypto-components';
-import { useState } from 'react';
-import { QueryClient, QueryClientProvider } from 'react-query';
-// import { Route, Routes } from 'react-router-dom';
-import Header from './components/Header/Header';
-// import Modal from './components/Modal/Modal';
-// import Asset from './pages/Asset';
-// import BuyAsset from './pages/BuyAsset';
-// import Main from './pages/Main';
-// import Portfolio from './pages/Portfolio';
-import trpc from './services/trpc.service';
-import { StyledWrapper } from './styles';
+import { Modal } from "crypto-components";
+import React, { useState } from "react";
+import { QueryClient, QueryClientProvider } from "react-query";
+import { Route, Routes } from "react-router-dom";
+import Header from "./components/Header/Header";
+import Asset from "./pages/Asset";
+import BuyAsset from "./pages/BuyAsset";
+import Main from "./pages/Main";
+import Portfolio from "./pages/Portfolio";
+import trpc from "./services/trpc.service";
+import { StyledWrapper } from "./styles";
 
 function App() {
   const [queryClient] = useState(() => new QueryClient());
-  const [trpcClient] = useState(() => trpc.createClient({
-    url: 'http://localhost:4040/trpc',
-  }));
+  const [trpcClient] = useState(() =>
+    trpc.createClient({
+      url: "http://localhost:4040/trpc",
+    })
+  );
   return (
     <trpc.Provider client={trpcClient} queryClient={queryClient}>
       <QueryClientProvider client={queryClient}>
         <StyledWrapper>
           <Header />
           <div>
-            {/* <Routes>
+            <Routes>
               <Route path="/" element={<Main />}>
                 <Route
                   path="portfolio"
-                  element={(
+                  element={
                     <Modal type="regular">
                       <Portfolio />
                     </Modal>
-                  )}
+                  }
                 />
                 <Route
                   path="buy/:assetId"
-                  element={(
+                  element={
                     <Modal type="minified">
                       <BuyAsset />
                     </Modal>
-                  )}
+                  }
                 />
               </Route>
               <Route path="/asset/:assetId" element={<Asset />}>
                 <Route
                   path="buy/:assetId"
-                  element={(
+                  element={
                     <Modal type="minified">
                       <BuyAsset />
                     </Modal>
-                  )}
+                  }
                 />
                 <Route
                   path="portfolio"
-                  element={(
+                  element={
                     <Modal type="regular">
                       <Portfolio />
                     </Modal>
-                  )}
+                  }
                 />
               </Route>
-            </Routes> */}
+            </Routes>
           </div>
         </StyledWrapper>
       </QueryClientProvider>

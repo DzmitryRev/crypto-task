@@ -1,5 +1,5 @@
 import { createReactQueryHooks } from '@trpc/react';
-import { AppRouter } from 'crypto-server/src/trpc/router';
+import type { AppRouter } from 'new-crypto-server/src/trpc/router';
 
 const trpc = createReactQueryHooks<AppRouter>();
 

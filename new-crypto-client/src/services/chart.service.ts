@@ -9,9 +9,9 @@ import {
   Tooltip,
   Filler,
   Legend,
-} from 'chart.js';
-import zoomPlugin from 'chartjs-plugin-zoom';
-import type { HistoryType } from 'new-crypto-server/src/types/types';
+} from "chart.js";
+import zoomPlugin from "chartjs-plugin-zoom";
+import type { HistoryType } from "new-crypto-server/src/types/types";
 
 ChartJS.register(
   CategoryScale,
@@ -22,10 +22,10 @@ ChartJS.register(
   Tooltip,
   Filler,
   Legend,
-  zoomPlugin,
+  zoomPlugin
 );
 
-export const chartOptions: ChartOptions<'line'> = {
+export const chartOptions: ChartOptions<"line"> = {
   responsive: true,
   maintainAspectRatio: false,
   plugins: {
@@ -35,7 +35,7 @@ export const chartOptions: ChartOptions<'line'> = {
     zoom: {
       pan: {
         enabled: true,
-        mode: 'x',
+        mode: "x",
       },
       zoom: {
         pinch: {
@@ -44,7 +44,7 @@ export const chartOptions: ChartOptions<'line'> = {
         wheel: {
           enabled: true,
         },
-        mode: 'x',
+        mode: "x",
       },
     },
   },
@@ -67,10 +67,10 @@ export function createChartData(history: HistoryType[]): ChartDataType {
     datasets: [
       {
         fill: true,
-        label: 'Price',
+        label: "Price",
         data: history.map((item) => item.priceUsd),
-        borderColor: 'rgb(53, 162, 235)',
-        backgroundColor: 'rgba(53, 162, 235, 0.5)',
+        borderColor: "rgb(53, 162, 235)",
+        backgroundColor: "rgba(53, 162, 235, 0.5)",
       },
     ],
   };

@@ -1,5 +1,5 @@
-import uniqid from 'uniqid';
-import type { AssetType } from 'new-crypto-server/src/types/types';
+import uniqid from "uniqid";
+import type { AssetType } from "new-crypto-server/src/types/types";
 
 export type StorageAssetType = {
   asset: AssetType;
@@ -9,11 +9,11 @@ export type StorageAssetType = {
 };
 
 class PortfolioStorage {
-  static storageName: string = 'crypto-curr';
+  static storageName: string = "crypto-curr";
 
   static getPortfolio() {
     const storageData: StorageAssetType[] = JSON.parse(
-      localStorage.getItem(this.storageName) || '[]',
+      localStorage.getItem(this.storageName) || "[]"
     );
     return storageData;
   }
@@ -34,7 +34,7 @@ class PortfolioStorage {
     const storageData: StorageAssetType[] = this.getPortfolio();
     localStorage.setItem(
       this.storageName,
-      JSON.stringify(storageData.filter((item) => item.id !== id)),
+      JSON.stringify(storageData.filter((item) => item.id !== id))
     );
   }
 }
