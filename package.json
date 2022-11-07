@@ -18,8 +18,8 @@
     },
     "homepage": "https://github.com/DzmitryRev/crypto-task#readme",
     "workspaces": [
-        "client",
-        "server"
+        "new-crypto-client",
+        "new-server"
     ],
     "dependencies": {},
     "engines": {

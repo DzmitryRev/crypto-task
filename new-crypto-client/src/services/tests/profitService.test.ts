@@ -1,4 +1,4 @@
-import type { AssetType } from 'new-crypto-server/src/types/types';
+import type { AssetType } from 'crypto-server/src/types/types';
 import { StorageAssetType } from '../localStorage.service';
 import { calculateProfitSum, calculateSum } from '../profit.service';
 

@@ -15,6 +15,5 @@ root.render(
       <GlobalStyles />
       <App />
     </Provider>
-    ,
   </BrowserRouter>,
 );

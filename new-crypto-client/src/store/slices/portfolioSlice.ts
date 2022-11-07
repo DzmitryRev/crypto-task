@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
-import type { AssetResponseType, AssetType } from 'new-crypto-server/src/types/types';
+import type { AssetResponseType, AssetType } from 'crypto-server/src/types/types';
 import PortfolioStorage, { StorageAssetType } from '../../services/localStorage.service';
 import { calculateProfitSum, calculateSum } from '../../services/profit.service';
 

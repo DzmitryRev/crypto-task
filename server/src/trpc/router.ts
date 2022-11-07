@@ -1,7 +1,7 @@
 import * as trpc from '@trpc/server';
 import axios from 'axios';
 import { z } from 'zod';
-import { AssetResponseType, AssetsResponseType, HistoryResponceType } from '../models/models';
+import { AssetResponseType, AssetsResponseType, HistoryResponceType } from '../types/types';
 import { Context } from './context';
 
 function createRouter() {

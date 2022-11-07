@@ -11,7 +11,7 @@ import {
   Legend,
 } from 'chart.js';
 import zoomPlugin from 'chartjs-plugin-zoom';
-import type { HistoryType } from 'new-crypto-server/src/types/types';
+import type { HistoryType } from 'crypto-server/src/types/types';
 
 ChartJS.register(
   CategoryScale,

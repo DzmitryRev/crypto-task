@@ -16,7 +16,7 @@ app.use(
   })
 );
 
-const PORT = 4000;
+const PORT = 4040;
 
 app.listen(PORT, () => {
   console.log(`Server is running. PORT=${PORT}`);
