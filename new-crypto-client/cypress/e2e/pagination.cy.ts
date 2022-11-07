@@ -1,6 +1,6 @@
 /* eslint-disable linebreak-style */
 
-import { AssetType } from 'server/src/models/models';
+import type { AssetType } from 'crypto-server/src/types/types';
 
 context('Pagination', () => {
   beforeEach(() => {

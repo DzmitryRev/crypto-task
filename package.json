@@ -17,10 +17,6 @@
         "url": "https://github.com/DzmitryRev/crypto-task/issues"
     },
     "homepage": "https://github.com/DzmitryRev/crypto-task#readme",
-    "workspaces": [
-        "new-crypto-client",
-        "new-server"
-    ],
     "dependencies": {},
     "engines": {
         "node": "18.x"

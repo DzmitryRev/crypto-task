@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-import { AssetType } from 'server/src/models/models';
+import type { AssetType } from 'crypto-server/src/types/types';
 
 context('Assets links test', () => {
   beforeEach(() => {
