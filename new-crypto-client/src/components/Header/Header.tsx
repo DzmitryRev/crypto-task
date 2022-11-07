@@ -1,13 +1,13 @@
-import { Link, useLocation } from "react-router-dom";
-import usePortfolio from "../../hooks/usePortfolio";
-import StyledHeader from "./StyledHeader";
-import trpc from "../../services/trpc.service";
-import { Button } from "crypto-components";
+import { Link, useLocation } from 'react-router-dom';
+import { Button } from 'crypto-components';
+import usePortfolio from '../../hooks/usePortfolio';
+import StyledHeader from './StyledHeader';
+import trpc from '../../services/trpc.service';
 
 export default function Header() {
   const { sum, profit } = usePortfolio();
 
-  const { data } = trpc.useQuery(["assets", { offset: 0, limit: 3 }]);
+  const { data } = trpc.useQuery(['assets', { offset: 0, limit: 3 }]);
   const topAssets = data?.data;
 
   const location = useLocation();
@@ -22,10 +22,11 @@ export default function Header() {
                 {item.name}
                 <span
                   className={`top-curr-profit ${
-                    +item.changePercent24Hr < 0 ? "color-red" : "color-green"
+                    +item.changePercent24Hr < 0 ? 'color-red' : 'color-green'
                   }`}
                 >
-                  {(+item.changePercent24Hr).toFixed(2)}%
+                  {(+item.changePercent24Hr).toFixed(2)}
+                  %
                 </span>
               </div>
             </Link>
@@ -36,9 +37,13 @@ export default function Header() {
       <div>
         {!!sum && (
           <>
-            <h4>{sum.toFixed(2)}</h4>{" "}
+            <h4>{sum.toFixed(2)}</h4>
+            {' '}
             <h4>
-              {profit.toFixed(2) || ""}({`${((profit / sum) * 100).toFixed(2)}%` || ""})
+              {profit.toFixed(2) || ''}
+              (
+              {`${((profit / sum) * 100).toFixed(2)}%` || ''}
+              )
             </h4>
           </>
         )}
@@ -48,7 +53,8 @@ export default function Header() {
           data-cy-id="portfolio-link"
           color="blue"
           as={Link}
-          to={`${location.pathname}${location.pathname === "/" ? "" : "/"}portfolio`}
+          to={`${location.pathname}${location.pathname === '/' ? '' : '/'}portfolio`}
+          state={{ prevLocation: location.pathname }}
         >
           portfolio
         </Button>

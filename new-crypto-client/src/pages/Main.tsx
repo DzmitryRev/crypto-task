@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import { Link, Outlet } from 'react-router-dom';
+import {
+  Button, Loading, Pagination, StyledTableCell, Table, TableRow,
+} from 'crypto-components';
 import { StyledError } from '../styles';
 import Variables from '../styles/variables';
 import trpc from '../services/trpc.service';
-import { Loading, Pagination, Table, TableRow } from "crypto-components";
-
 
 function Main() {
   const [pageOffset, setPageOffset] = useState(0);
@@ -25,7 +26,7 @@ function Main() {
               <>
                 {assets.map((item) => (
                   <TableRow key={item.id}>
-                    {/* <StyledTableCell maxWidth={140} clicable>
+                    <StyledTableCell maxWidth={140} clicable>
                       <Link to={`/asset/${item.id}`}>{item.name}</Link>
                     </StyledTableCell>
                     <StyledTableCell breakpoint={Variables.bp.l}>{item.symbol}</StyledTableCell>
@@ -34,10 +35,10 @@ function Main() {
                     </StyledTableCell>
                     <StyledTableCell>{(+item.changePercent24Hr).toFixed(2)}</StyledTableCell>
                     <StyledTableCell>
-                      <ButtonLink color="green" path={`buy/${item.id}`}>
+                      <Button<typeof Link> as={Link} color="green" to={`buy/${item.id}`}>
                         add
-                      </ButtonLink>
-                    </StyledTableCell> */}
+                      </Button>
+                    </StyledTableCell>
                   </TableRow>
                 ))}
               </>

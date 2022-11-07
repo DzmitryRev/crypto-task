@@ -1,8 +1,8 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
-import type { AssetResponseType, AssetType } from "new-crypto-server/src/types/types";
-import PortfolioStorage, { StorageAssetType } from "../../services/localStorage.service";
-import { calculateProfitSum, calculateSum } from "../../services/profit.service";
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import axios from 'axios';
+import type { AssetResponseType, AssetType } from 'new-crypto-server/src/types/types';
+import PortfolioStorage, { StorageAssetType } from '../../services/localStorage.service';
+import { calculateProfitSum, calculateSum } from '../../services/profit.service';
 
 interface IPortfolioSliceState {
   assets: AssetType[];
@@ -19,15 +19,15 @@ const initialState: IPortfolioSliceState = {
 };
 
 export const fetchPortfolioAsset = createAsyncThunk(
-  "asset/fetchPortfolioAsset",
+  'asset/fetchPortfolioAsset',
   async (id: string) => {
     const response = await axios.get<AssetResponseType>(`https://api.coincap.io/v2/assets/${id}`);
     return response.data;
-  }
+  },
 );
 
 export const portfolioSlice = createSlice({
-  name: "portfolio",
+  name: 'portfolio',
   initialState,
   reducers: {
     cleanAssets(state) {
@@ -45,7 +45,7 @@ export const portfolioSlice = createSlice({
       const newAsset = action.payload.data;
       if (!state.assets.filter((item) => item.id === action.payload.data.id).length) {
         state.assets.push(newAsset);
-        state.profit = state.sum - calculateProfitSum(state.portfolio, state.assets);
+        state.profit = calculateProfitSum(state.portfolio, state.assets);
       }
     });
   },

@@ -1,12 +1,14 @@
-import type { AssetType } from "new-crypto-server/src/types/types";
-import { StorageAssetType } from "./localStorage.service";
+import type { AssetType } from 'new-crypto-server/src/types/types';
+import { StorageAssetType } from './localStorage.service';
 
 export function calculateProfitSum(portfolio: StorageAssetType[], assets: AssetType[]) {
   let sum = 0;
+
   portfolio.forEach((item) => {
-    const newItem = assets.find((i) => i.id === item.asset.id);
-    if (newItem) sum += parseFloat(newItem?.priceUsd) * item.quantity;
+    const currentPrice = parseFloat(assets.find((i) => i.id === item.asset.id)?.priceUsd || '0') * item.quantity || 0;
+    sum += currentPrice - item.total;
   });
+
   return sum;
 }
 

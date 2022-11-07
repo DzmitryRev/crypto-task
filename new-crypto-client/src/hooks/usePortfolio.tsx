@@ -1,15 +1,14 @@
-import { useEffect } from "react";
-import { cleanAssets, fetchPortfolioAsset, setPortfolio } from "../store/slices/portfolioSlice";
-import { useAppDispatch, useAppSelector } from "../store/store";
+import { useEffect } from 'react';
+import { cleanAssets, fetchPortfolioAsset, setPortfolio } from '../store/slices/portfolioSlice';
+import { useAppDispatch, useAppSelector } from '../store/store';
 
 function usePortfolio() {
   const dispatch = useAppDispatch();
-  const { portfolio, assets, sum, profit } = useAppSelector((store) => store.portfolio);
+  const {
+    portfolio, assets, sum, profit,
+  } = useAppSelector((store) => store.portfolio);
   const loadPortfolio = () => {
     dispatch(setPortfolio());
-    portfolio.forEach((item) => {
-      dispatch(fetchPortfolioAsset(item.asset.id));
-    });
   };
 
   useEffect(() => {

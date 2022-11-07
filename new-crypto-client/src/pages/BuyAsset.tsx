@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import { Button, Loading } from 'crypto-components';
 import PortfolioStorage from '../services/localStorage.service';
 import { useAppDispatch } from '../store/store';
 import { setPortfolio } from '../store/slices/portfolioSlice';
 import { StyledBuyAsset, StyledError } from '../styles';
 import trpc from '../services/trpc.service';
-import { Button, Loading } from "crypto-components";
 
 function BuyAsset() {
   const { assetId } = useParams();
@@ -62,7 +62,7 @@ function BuyAsset() {
             )}
           </div>
 
-          <Button<"button">
+          <Button<'button'>
             as="button"
             color="green"
             onClick={() => {

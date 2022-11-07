@@ -1,16 +1,13 @@
-import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import { Link } from 'react-router-dom';
-// import Button from '../components/Button/Button';
-// import Table from '../components/Table/Table';
-// import TableRow from '../components/TableRow/TableRow';
+import {
+  Button, StyledTableCell, Table, TableRow,
+} from 'crypto-components';
 import PortfolioStorage from '../services/localStorage.service';
-import usePortfolio from '../hooks/usePortfolio';
 import Variables from '../styles/variables';
-import { Table, TableRow } from "crypto-components";
+import usePortfolio from '../hooks/usePortfolio';
 
 function Portfolio() {
   const { portfolio, assets, loadPortfolio } = usePortfolio();
-
   return (
     <div>
       {portfolio.length ? (
@@ -19,33 +16,38 @@ function Portfolio() {
             <>
               {portfolio.map((item) => {
                 const currentPrice = parseFloat(assets.find((i) => i.id === item.asset.id)?.priceUsd || '0')
-                  * item.quantity;
-
+                    * item.quantity || 0;
+                const profit = `${(((currentPrice - item.total) / item.total) * 100).toFixed(2)}%`;
                 return (
                   <TableRow key={item.id}>
-                    {/* <StyledTableCell maxWidth={110} clicable>
+                    <StyledTableCell maxWidth={110} clicable>
                       <Link to={`/asset/${item.asset.id}`}>{item.asset.name}</Link>
                     </StyledTableCell>
                     <StyledTableCell breakpoint={Variables.bp.l}>
                       {item.asset.symbol}
                     </StyledTableCell>
-                    <StyledTableCell maxWidth={90} breakpoint={Variables.bp.m}>
-                      {currentPrice ? currentPrice.toFixed(2) : '...'}
+                    <StyledTableCell
+                      maxWidth={110}
+                      breakpoint={Variables.bp.m}
+                      title={currentPrice.toFixed(2)}
+                    >
+                      {currentPrice.toFixed(2)}
                     </StyledTableCell>
-                    <StyledTableCell maxWidth={75}>
-                      {currentPrice ? (currentPrice - item.total).toFixed(2) : '...'}
+                    <StyledTableCell maxWidth={100} title={profit}>
+                      {profit}
                     </StyledTableCell>
                     <StyledTableCell>
                       <Button
+                        as="button"
                         color="red"
-                        action={() => {
+                        onClick={() => {
                           PortfolioStorage.removeFromPortfolio(item.id);
                           loadPortfolio();
                         }}
                       >
-                        <DeleteForeverIcon />
+                        delete
                       </Button>
-                    </StyledTableCell> */}
+                    </StyledTableCell>
                   </TableRow>
                 );
               })}

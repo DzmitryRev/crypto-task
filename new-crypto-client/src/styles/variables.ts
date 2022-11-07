@@ -13,9 +13,9 @@ type VariablesType = {
 
 const Variables: VariablesType = {
   colors: {
-    blue: "#4d94ff",
-    red: "#ff4d4d",
-    green: "#00b33c",
+    blue: '#4d94ff',
+    red: '#ff4d4d',
+    green: '#00b33c',
   },
   bp: {
     s: 398,

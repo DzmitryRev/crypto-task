@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import Variables from "../../styles/variables";
+import styled from 'styled-components';
+import Variables from '../../styles/variables';
 
 const StyledHeader = styled.header`
   height: 70px;
