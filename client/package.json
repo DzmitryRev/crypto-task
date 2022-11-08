@@ -1,5 +1,5 @@
 {
-    "name": "new-crypto-client",
+    "name": "crypto-client",
     "version": "0.1.0",
     "private": true,
     "dependencies": {
