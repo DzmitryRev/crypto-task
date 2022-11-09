@@ -1,4 +1,4 @@
-import type { HistoryType } from 'crypto-server/src/types/types';
+import { HistoryType } from '../../types/types';
 import { ChartDataType, createChartData } from '../chart.service';
 
 const mockHistory: HistoryType[] = [

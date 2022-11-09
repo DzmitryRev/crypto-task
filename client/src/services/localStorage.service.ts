@@ -1,5 +1,5 @@
 import uniqid from 'uniqid';
-import type { AssetType } from 'crypto-server/src/types/types';
+import { AssetType } from '../types/types';
 
 export type StorageAssetType = {
   asset: AssetType;

@@ -1,7 +1,7 @@
 import { Line } from 'react-chartjs-2';
-import type { HistoryType } from 'crypto-server/src/types/types';
 import StyledChart from './StyledChart';
 import { chartOptions, createChartData } from '../../services/chart.service';
+import { HistoryType } from '../../types/types';
 
 type ChartPropsType = {
   history: HistoryType[];
