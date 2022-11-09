@@ -15,7 +15,7 @@ import { StyledWrapper } from './styles';
 function App() {
   const [queryClient] = useState(() => new QueryClient());
   const [trpcClient] = useState(() => trpc.createClient({
-    url: 'https://crypto-task-three.vercel.app/trpc',
+    url: 'http://localhost:4040/trpc',
   }));
   const navigate = useNavigate();
   const location = useLocation();
